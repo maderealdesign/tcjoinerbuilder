@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us & Free Quotes | Tom Cutts Joinery & Building</title>
+    <meta name="description" content="Contact Tom Cutts Joinery & Building for a free, no-obligation quote. Specialists in extensions, garden rooms, and commercial site work across Lancashire and the North West.">
+    <meta name="keywords" content="Contact Tom Cutts, Joinery Quote, Builder Quote Colne, Carpenter Burnley, Extensions Pendle, Ribble Valley Building Services, Contact Commercial Joiner">
+    <meta name="author" content="Tom Cutts">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tcjoinerbuilder.co.uk/contact.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "Tom Cutts Joinery & Building",
+      "image": "https://tcjoinerbuilder.co.uk/images/social-share.png",
+      "telephone": "07816 937 159",
+      "email": "tcuttsjoinery@outlook.com",
+      "url": "https://tcjoinerbuilder.co.uk/contact.html",
+      "priceRange": "££",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "GB",
+        "addressRegion": "Lancashire"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Colne" },
+        { "@type": "City", "name": "Burnley" },
+        { "@type": "City", "name": "Pendle" },
+        { "@type": "City", "name": "Ribble Valley" },
+        { "@type": "State", "name": "North West" }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Tom Cutts Joinery & Building",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "07816 937 159",
+          "contactType": "customer service",
+          "email": "tcuttsjoinery@outlook.com",
+          "areaServed": "North West England",
+          "availableLanguage": "English"
+        }
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you provide free, no-obligation quotes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide completely free, detailed, and no-obligation quotes for all prospective domestic and commercial projects. We will visit your property or site, assess the scope of work, and provide a transparent breakdown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can you start my building project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lead times vary depending on the scale of the project and our current schedule. Once we conduct a site visit and provide your quote, we will give you a clear and honest timeline for commencement and completion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What areas do you cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We primarily serve Colne, Burnley, Pendle, Ribble Valley, and the wider North West region for both residential renovations and commercial site work."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1e293b',
+                            accent: '#f43f5e',
+                            accentHover: '#e11d48',
+                            light: '#f8fafc',
+                            whatsapp: '#25D366'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg { background-image: linear-gradient(to bottom, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.6), rgba(30, 41, 59, 0.9)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .service-card { transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); border-color: #f43f5e; }
+        .faq-content { transition: max-height 0.3s ease-out; max-height: 0; overflow: hidden; }
+        .faq-item.active .faq-content { max-height: 200px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        @keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+        .animate-bounce-slow { animation: bounce-slow 2s infinite; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-brand-light antialiased">
+    <div id="menu-placeholder"></div>
+
+    <main class="w-full">
+        <section class="pt-32 pb-16 md:pt-40 md:pb-24 bg-white relative overflow-hidden border-b border-slate-200">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-light/40 z-0 transform skew-x-12 translate-x-20"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-accent/10 text-brand-accent text-sm font-bold uppercase tracking-widest mb-4">
+                    Get in Touch
+                </span>
+                <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-brand-dark mb-6 leading-tight">
+                    Start Your Next Project <br>
+                    <span class="text-brand-accent">With Complete Confidence</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed mb-8">
+                    Whether you are planning a bespoke domestic garden room or require end-to-end commercial site management, Tom Cutts and the team are ready to deliver. Request your free, detailed quotation today.
+                </p>
+                <div class="w-24 h-1 bg-brand-accent mx-auto rounded"></div>
+            </div>
+        </section>
+
+        <section class="py-12 bg-slate-50 relative z-20 -mt-8">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-brand-accent text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand-accent text-2xl mx-auto mb-4 border border-slate-100">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-brand-dark mb-2">Call Us Directly</h3>
+                        <p class="text-gray-500 text-sm mb-4">Available for immediate inquiries and site visit scheduling.</p>
+                        <a href="tel:07816937159" class="text-xl font-bold text-brand-accent hover:text-brand-accentHover transition">
+                            07816 937 159
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-brand-accent text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand-accent text-2xl mx-auto mb-4 border border-slate-100">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-brand-dark mb-2">Send an Email</h3>
+                        <p class="text-gray-500 text-sm mb-4">Perfect for sending over architectural plans, BOQs, or design ideas.</p>
+                        <a href="mailto:tcuttsjoinery@outlook.com" class="text-lg font-bold text-brand-dark hover:text-brand-accent transition break-all">
+                            tcuttsjoinery@outlook.com
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-brand-accent text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand-accent text-2xl mx-auto mb-4 border border-slate-100">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-brand-dark mb-2">Operating Hours</h3>
+                        <p class="text-gray-500 text-sm mb-4">We operate standard site hours but aim to respond to queries promptly.</p>
+                        <div class="text-base font-bold text-brand-dark space-y-1">
+                            <p>Mon - Fri: 08:00 - 18:00</p>
+                            <p class="text-brand-accent">Sat - Sun: Closed</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-brand-dark text-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-slate-700 rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 bg-brand-accent rounded-full opacity-10 blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                    
+                    <div class="flex flex-col justify-center">
+                        <span class="text-brand-accent font-bold uppercase tracking-wider text-sm mb-2">Request A Quote</span>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Let's Discuss Your Vision</h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                            Fill out the form with as much detail as possible. Whether it's a domestic kitchen fit, a garden room, or a major commercial development, we will review your requirements and get back to you to arrange a free site survey.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 shrink-0 border border-white/20">
+                                    <i class="fas fa-search-location"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-lg">Free Site Surveys</h4>
+                                    <p class="text-sm text-gray-400 mt-1">We come to you. Accurate measurements ensure our transparent pricing stays transparent.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 shrink-0 border border-white/20">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-lg">No Hidden Costs</h4>
+                                    <p class="text-sm text-gray-400 mt-1">Our comprehensive quotes cover everything discussed. You budget with absolute certainty.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 shrink-0 border border-white/20">
+                                    <i class="fas fa-hard-hat"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-lg">Fully Insured & Qualified</h4>
+                                    <p class="text-sm text-gray-400 mt-1">Up to £5M public liability and 18+ years of industry-leading expertise backing every job.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/80 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-slate-700 shadow-2xl relative">
+                        <h3 class="font-heading text-2xl font-bold text-white mb-6 border-b border-slate-600 pb-4">Send Us A Message</h3>
+                        <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you for reaching out! Your message has been sent successfully. We will be in touch shortly.');">
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-semibold text-gray-300 mb-1">First Name *</label>
+                                    <input type="text" id="firstName" required placeholder="John" class="w-full p-4 bg-slate-900/50 text-white border border-slate-600 rounded-lg focus:border-brand-accent focus:ring-1 focus:ring-brand-accent focus:outline-none placeholder-gray-500 transition">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-semibold text-gray-300 mb-1">Last Name *</label>
+                                    <input type="text" id="lastName" required placeholder="Doe" class="w-full p-4 bg-slate-900/50 text-white border border-slate-600 rounded-lg focus:border-brand-accent focus:ring-1 focus:ring-brand-accent focus:outline-none placeholder-gray-500 transition">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-gray-300 mb-1">Email Address *</label>
+                                    <input type="email" id="email" required placeholder="john@example.com" class="w-full p-4 bg-slate-900/50 text-white border border-slate-600 rounded-lg focus:border-brand-accent focus:ring-1 focus:ring-brand-accent focus:outline-none placeholder-gray-500 transition">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-semibold text-gray-300 mb-1">Phone Number</label>
+                                    <input type="tel" id="phone" placeholder="07123 456 789" class="w-full p-4 bg-slate-900/50 text-white border border-slate-600 rounded-lg focus:border-brand-accent focus:ring-1 focus:ring-brand-accent focus:outline-none placeholder-gray-500 transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="projectType" class="block text-sm font-semibold text-gray-300 mb-1">Project Type</label>
+                                <select id="projectType" class="w-full p-4 bg-slate-900/50 text-white border border-slate-600 rounded-lg focus:border-brand-accent focus:ring-1 focus:ring-brand-accent focus:outline-none appearance-none transition">
+                                    <option value="" disabled selected>Select an option...</option>
+                                    <option value="domestic">Domestic / Residential Improvement</option>
+                                    <option value="commercial">Commercial / Site Work</option>
+                                    <option value="garden_room">Garden Room / Outdoor Structure</option>
+                                    <option value="extension">Extension / Renovation</option>
+                                    <option value="other">Other Bespoke Joinery</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-gray-300 mb-1">Project Details *</label>
+                                <textarea id="message" required placeholder="Please provide a brief overview of your project, including location..." rows="5" class="w-full p-4 bg-slate-900/50 text-white border border-slate-600 rounded-lg focus:border-brand-accent focus:ring-1 focus:ring-brand-accent focus:outline-none placeholder-gray-500 transition resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-bold py-4 rounded-lg transition uppercase tracking-wide shadow-lg border-2 border-brand-accent hover:border-brand-accentHover mt-4">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white border-b border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-light rounded-full text-brand-accent text-3xl mb-6">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h2 class="font-heading text-2xl md:text-3xl font-bold text-brand-dark mb-4">Areas We Cover</h2>
+                <p class="text-gray-600 leading-relaxed text-lg max-w-2xl mx-auto mb-8">
+                    Based locally, we are perfectly positioned to deliver exceptional joinery and building services across Lancashire and the North West.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="px-5 py-2 bg-slate-100 text-brand-dark rounded-full font-semibold border border-slate-200">Colne</span>
+                    <span class="px-5 py-2 bg-slate-100 text-brand-dark rounded-full font-semibold border border-slate-200">Burnley</span>
+                    <span class="px-5 py-2 bg-slate-100 text-brand-dark rounded-full font-semibold border border-slate-200">Pendle</span>
+                    <span class="px-5 py-2 bg-slate-100 text-brand-dark rounded-full font-semibold border border-slate-200">Ribble Valley</span>
+                    <span class="px-5 py-2 bg-slate-100 text-brand-dark rounded-full font-semibold border border-slate-200">Lancashire</span>
+                    <span class="px-5 py-2 bg-brand-accent/10 text-brand-accent rounded-full font-bold border border-brand-accent/20">Greater North West</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-brand-accent font-bold uppercase tracking-wider text-sm">Common Queries</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-dark mt-2 mb-4">Questions About Quoting?</h2>
+                    <div class="w-20 h-1 bg-brand-accent mx-auto rounded"></div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="faq-item border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <button class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-brand-dark focus:outline-none transition-colors" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="text-lg">Do you provide free, no-obligation quotes?</span>
+                            <i class="fas fa-chevron-down faq-icon transition-transform text-brand-accent text-xl"></i>
+                        </button>
+                        <div class="faq-content px-5">
+                            <p class="py-4 text-gray-600 leading-relaxed">Yes, we provide completely free, detailed, and no-obligation quotes for all prospective domestic and commercial projects. We will visit your property or site, assess the scope of work, and provide a transparent breakdown.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <button class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-brand-dark focus:outline-none transition-colors" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="text-lg">How quickly can you start my building project?</span>
+                            <i class="fas fa-chevron-down faq-icon transition-transform text-brand-accent text-xl"></i>
+                        </button>
+                        <div class="faq-content px-5">
+                            <p class="py-4 text-gray-600 leading-relaxed">Lead times vary depending on the scale of the project, seasonal demand, and our current schedule. Once we conduct a site visit and provide your quote, we will give you a clear and honest timeline for commencement and completion.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <button class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-brand-dark focus:outline-none transition-colors" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="text-lg">Can I send architectural plans or BOQs via email?</span>
+                            <i class="fas fa-chevron-down faq-icon transition-transform text-brand-accent text-xl"></i>
+                        </button>
+                        <div class="faq-content px-5">
+                            <p class="py-4 text-gray-600 leading-relaxed">Absolutely. If you have existing architectural drawings, structural plans, or Bills of Quantities for commercial tenders, please email them directly to <a href="mailto:tcuttsjoinery@outlook.com" class="text-brand-accent font-bold hover:underline">tcuttsjoinery@outlook.com</a>. We are experienced in pricing works accurately from detailed specifications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="font-heading text-2xl font-bold text-white">Tom Cutts</h3>
+                <p class="text-sm tracking-widest uppercase mt-1">Joinery & Building</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-brand-accent transition transform hover:scale-110"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-brand-accent transition transform hover:scale-110"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="mailto:tcuttsjoinery@outlook.com" class="hover:text-brand-accent transition transform hover:scale-110"><i class="fas fa-envelope text-2xl"></i></a>
+            </div>
+            <div class="text-sm text-center md:text-right">
+                <p>&copy; 2024 Tom Cutts Joinery & Building.</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="menu-loader.js"></script>
+</body>
+</html>
