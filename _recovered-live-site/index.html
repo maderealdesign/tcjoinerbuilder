@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#dc2626">
     
     <title>Tom Cutts Joinery & Building | Construction, Design & Build</title>
     <meta name="description" content="Tom Cutts Joinery & Building: Specialists in garden rooms, extensions and bespoke joinery. Domestic and commercial. Covering Colne, Burnley, Pendle, Ribble Valley, and the North West.">
@@ -18,6 +13,8 @@
     <link rel="canonical" href="https://tcjoinerbuilder.co.uk/">
 
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
     <meta property="og:type" content="business.business">
     <meta property="og:title" content="Tom Cutts Joinery & Building | Construction, Design & Build">
@@ -681,15 +678,12 @@
             </a>
             
             <div class="mt-12 bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <form class="space-y-4" name="homepage-enquiry" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="homepage-enquiry">
-                    <input type="hidden" name="subject" value="TC Joinery - New website enquiry">
-                    <p hidden><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you! We will email you back shortly.');">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="name" aria-label="Your Name" required autocomplete="name" placeholder="Your Name" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
-                        <input type="email" name="email" aria-label="Email Address" required autocomplete="email" placeholder="Email Address" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
+                        <input type="text" placeholder="Your Name" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
+                        <input type="email" placeholder="Email Address" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
                     </div>
-                    <textarea name="message" aria-label="Briefly describe your project..." required placeholder="Briefly describe your project..." rows="4" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400"></textarea>
+                    <textarea placeholder="Briefly describe your project..." rows="4" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400"></textarea>
                     <button type="submit" class="w-full bg-white text-brand-dark hover:bg-gray-100 font-bold py-4 rounded transition uppercase tracking-wide">
                         Send Message
                     </button>
@@ -712,8 +706,7 @@
             </div>
             
             <div class="text-sm text-center md:text-right">
-                <p>&copy; 2024 Tom Cutts Joinery & Building.<span> | <a href="https://madereal.uk" target="_blank" rel="noopener" style="text-decoration: none; color: inherit; opacity: 0.8;">Website by MadeReal</a></span></p>
-                <p>All Rights Reserved.</p>
+                <p>&copy; 2026 Tom Cutts Joinery & Building. All rights reserved. Created by <a href='https://madereal.uk' class='hover:text-blue-400 underline' target='_blank'>madereal.uk</a>.</p>
             </div>
         </div>
     </footer>

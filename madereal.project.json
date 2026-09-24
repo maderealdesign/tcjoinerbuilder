@@ -1,0 +1,24 @@
+{
+  "schema": "madereal.project.v1",
+  "name": "tcjoinery",
+  "type": "live-site",
+  "status": "live",
+  "client": "",
+  "localPath": "/Users/dom/Library/CloudStorage/OneDrive-Personal/madereal/Madereal 2026/Websites/tcjoinery",
+  "githubRepo": "https://github.com/maderealdesign/tcjoinerbuilder",
+  "netlifySiteId": "3c0c8eef-6c7a-4803-a362-95fa85ba3057",
+  "netlifyProjectName": "tcjoinery",
+  "primaryUrl": "https://tcjoinerbuilder.co.uk",
+  "customDomain": true,
+  "source": {
+    "method": "static-recovery",
+    "originalCandidatePath": "",
+    "consolidatedAt": ""
+  },
+  "footerBacklink": {
+    "required": true,
+    "present": false,
+    "href": "https://madereal.uk"
+  },
+  "notes": ""
+}

@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#dc2626">
     <title>Commercial Joinery & Site Management | Tom Cutts Joinery & Building</title>
     <meta name="description" content="Expert commercial joinery, site work, and project management across the North West. Trusted by councils and developers for new builds, fit-outs, and >£1M projects.">
     <meta name="keywords" content="Commercial Joinery, Site Management, Commercial Builder, New Build Developments, Commercial Fit-Outs, Heritage Restoration, Tom Cutts, Colne, Burnley, Lancashire, North West">
     <meta name="author" content="Tom Cutts">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tcjoinerbuilder.co.uk/commercial.html">
-    <link rel="icon" type="image/png" href="images/favicon.png">
 
     <script type="application/ld+json">
     {
@@ -349,16 +353,19 @@
 
                 <div class="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 text-left max-w-2xl mx-auto">
                     <h3 class="text-white font-bold text-xl mb-4 border-b border-white/10 pb-2">Direct Contact Form</h3>
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you! Your commercial inquiry has been received. Our management team will contact you shortly.');">
+                    <form class="space-y-4" name="commercial-enquiry" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="commercial-enquiry">
+                        <input type="hidden" name="subject" value="TC Joinery - New commercial enquiry">
+                        <p hidden><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" placeholder="Company Name" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
-                            <input type="text" placeholder="Contact Name" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
+                            <input type="text" name="company" aria-label="Company Name" autocomplete="organization" placeholder="Company Name" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
+                            <input type="text" name="name" aria-label="Contact Name" required autocomplete="name" placeholder="Contact Name" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="email" placeholder="Email Address" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
-                            <input type="tel" placeholder="Phone Number" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
+                            <input type="email" name="email" aria-label="Email Address" required autocomplete="email" placeholder="Email Address" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
+                            <input type="tel" name="phone" aria-label="Phone Number" autocomplete="tel" placeholder="Phone Number" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400">
                         </div>
-                        <textarea placeholder="Briefly describe the project scope, location, and estimated value..." rows="4" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400"></textarea>
+                        <textarea name="message" aria-label="Briefly describe the project scope, location, and estimated value..." required placeholder="Briefly describe the project scope, location, and estimated value..." rows="4" class="w-full p-4 bg-slate-800 text-white border border-slate-600 rounded focus:border-brand-accent focus:outline-none placeholder-gray-400"></textarea>
                         <button type="submit" class="w-full bg-white text-brand-dark hover:bg-gray-100 font-bold py-4 rounded transition uppercase tracking-wide">
                             Submit Inquiry
                         </button>
