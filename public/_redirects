@@ -4,6 +4,7 @@
 /menu /services 301!
 /_recovered-live-site/index.html / 301!
 /_recovered-live-site/ / 301!
+/review https://g.page/r/CWTtpNavvoM0EBM/review 302!
 /services-garden-rooms.html /services-garden-rooms 301!
 /services-decking.html /services-decking 301!
 /services-joinery.html /services-joinery 301!
@@ -20,4 +21,8 @@
 /areas-we-cover.html /areas-we-cover 301!
 /contact.html /contact 301!
 /privacy.html /privacy 301!
+/guides/garden-room-costs.html /guides/garden-room-costs 301!
+/guides/timber-or-composite-decking.html /guides/timber-or-composite-decking 301!
+/guides/garden-project-quotation-checklist.html /guides/garden-project-quotation-checklist 301!
+/guides.html /guides 301!
 /thank-you.html /thank-you 301!

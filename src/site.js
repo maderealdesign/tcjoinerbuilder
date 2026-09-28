@@ -14,7 +14,14 @@ function loadAnalytics() {
   window.gtag('js', new Date());
   let referrer = '';
   try { const u = new URL(document.referrer); referrer = u.origin + u.pathname; } catch (_) {}
-  window.gtag('config', analyticsId, { page_location: location.origin + location.pathname, page_referrer: referrer, allow_google_signals: false, allow_ad_personalization_signals: false });
+  // Recognise our published campaign links without forwarding arbitrary URL values.
+  const query = new URLSearchParams(location.search);
+  const campaignKey = [query.get('utm_source'), query.get('utm_medium'), query.get('utm_campaign')].join('|');
+  const knownCampaigns = {
+    'google|organic|google_business_profile': { campaign_source:'google', campaign_medium:'organic', campaign_name:'google_business_profile' },
+    'facebook|social|project_gallery': { campaign_source:'facebook', campaign_medium:'social', campaign_name:'project_gallery' }
+  };
+  window.gtag('config', analyticsId, { page_location: location.origin + location.pathname, page_referrer: referrer, allow_google_signals: false, allow_ad_personalization_signals: false, ...(knownCampaigns[campaignKey] || {}) });
   const tag = document.createElement('script'); tag.async = true; tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(analyticsId); document.head.appendChild(tag);
 }
 function track(name, details) { if (production && consent === 'granted' && typeof window.gtag === 'function') window.gtag('event', name, details); }
