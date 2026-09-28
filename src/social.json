@@ -1,0 +1,26 @@
+{
+  "checked": "2026-09-24",
+  "facebook": "https://www.facebook.com/people/Tom-Cutts-Joinery-Building/61576455187978/",
+  "google": "https://www.google.com/maps/place/Tom+Cutts+Joinery+%26+Building/data=!4m2!3m1!1s0x0:0x3483beafd6a4ed64",
+  "rating": 5.0,
+  "reviewCount": 10,
+  "reviews": [
+    {
+      "name": "Nick",
+      "excerpt": "We couldnt be happier with the outcome!",
+      "stars": 5
+    },
+    {
+      "name": "Emily J",
+      "excerpt": "Perfect attention to detail, very professional and efficient.",
+      "stars": 5
+    },
+    {
+      "name": "Thomas Eastwood",
+      "excerpt": "Very efficient, always on time and very clean and tidy.",
+      "stars": 5
+    }
+  ],
+  "whatsapp": "https://wa.me/447816937159",
+  "source": "Google business review panel and Facebook page independently matched by business name, website and phone."
+}

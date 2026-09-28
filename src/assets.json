@@ -1,0 +1,384 @@
+{
+  "gallery-media-wall.jpg": {
+    "file": "gallery-media-wall.webp",
+    "width": 1200,
+    "height": 983,
+    "srcset": [
+      [
+        "gallery-media-wall-400.webp",
+        400
+      ],
+      [
+        "gallery-media-wall-800.webp",
+        800
+      ],
+      [
+        "gallery-media-wall.webp",
+        1200
+      ]
+    ]
+  },
+  "wooden-clad-building-grey-doors-windows.webp": {
+    "file": "wooden-clad-building-grey-doors-windows.webp",
+    "width": 1000,
+    "height": 750,
+    "srcset": [
+      [
+        "wooden-clad-building-grey-doors-windows-400.webp",
+        400
+      ],
+      [
+        "wooden-clad-building-grey-doors-windows-800.webp",
+        800
+      ],
+      [
+        "wooden-clad-building-grey-doors-windows.webp",
+        1000
+      ]
+    ]
+  },
+  "gallery-staircase.jpg": {
+    "file": "gallery-staircase.webp",
+    "width": 1027,
+    "height": 1200,
+    "srcset": [
+      [
+        "gallery-staircase-400.webp",
+        400
+      ],
+      [
+        "gallery-staircase-800.webp",
+        800
+      ],
+      [
+        "gallery-staircase.webp",
+        1027
+      ]
+    ]
+  },
+  "gallery-extension.jpg": {
+    "file": "gallery-extension.webp",
+    "width": 1200,
+    "height": 1034,
+    "srcset": [
+      [
+        "gallery-extension-400.webp",
+        400
+      ],
+      [
+        "gallery-extension-800.webp",
+        800
+      ],
+      [
+        "gallery-extension.webp",
+        1200
+      ]
+    ]
+  },
+  "shed-construction-blue-membrane.webp": {
+    "file": "shed-construction-blue-membrane.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "shed-construction-blue-membrane-400.webp",
+        400
+      ],
+      [
+        "shed-construction-blue-membrane.webp",
+        750
+      ]
+    ]
+  },
+  "hallway-cabinet-decor.webp": {
+    "file": "hallway-cabinet-decor.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "hallway-cabinet-decor-400.webp",
+        400
+      ],
+      [
+        "hallway-cabinet-decor.webp",
+        750
+      ]
+    ]
+  },
+  "worker-installing-cedar-cladding.webp": {
+    "file": "worker-installing-cedar-cladding.webp",
+    "width": 563,
+    "height": 1000,
+    "srcset": [
+      [
+        "worker-installing-cedar-cladding-400.webp",
+        400
+      ],
+      [
+        "worker-installing-cedar-cladding.webp",
+        563
+      ]
+    ]
+  },
+  "boat-cockpit-interior.webp": {
+    "file": "boat-cockpit-interior.webp",
+    "width": 1000,
+    "height": 563,
+    "srcset": [
+      [
+        "boat-cockpit-interior-400.webp",
+        400
+      ],
+      [
+        "boat-cockpit-interior-800.webp",
+        800
+      ],
+      [
+        "boat-cockpit-interior.webp",
+        1000
+      ]
+    ]
+  },
+  "about-tom.jpg": {
+    "file": "about-tom.webp",
+    "width": 1200,
+    "height": 889,
+    "srcset": [
+      [
+        "about-tom-400.webp",
+        400
+      ],
+      [
+        "about-tom-800.webp",
+        800
+      ],
+      [
+        "about-tom.webp",
+        1200
+      ]
+    ]
+  },
+  "composite-decking-steps-garden.webp": {
+    "file": "composite-decking-steps-garden.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "composite-decking-steps-garden-400.webp",
+        400
+      ],
+      [
+        "composite-decking-steps-garden.webp",
+        750
+      ]
+    ]
+  },
+  "cedar-sauna-interior-with-heater-and-window.webp": {
+    "file": "cedar-sauna-interior-with-heater-and-window.webp",
+    "width": 1000,
+    "height": 934,
+    "srcset": [
+      [
+        "cedar-sauna-interior-with-heater-and-window-400.webp",
+        400
+      ],
+      [
+        "cedar-sauna-interior-with-heater-and-window-800.webp",
+        800
+      ],
+      [
+        "cedar-sauna-interior-with-heater-and-window.webp",
+        1000
+      ]
+    ]
+  },
+  "pergola.jpg": {
+    "file": "pergola.webp",
+    "width": 1200,
+    "height": 890,
+    "srcset": [
+      [
+        "pergola-400.webp",
+        400
+      ],
+      [
+        "pergola-800.webp",
+        800
+      ],
+      [
+        "pergola.webp",
+        1200
+      ]
+    ]
+  },
+  "gallery-wardrobes.jpg": {
+    "file": "gallery-wardrobes.webp",
+    "width": 900,
+    "height": 1200,
+    "srcset": [
+      [
+        "gallery-wardrobes-400.webp",
+        400
+      ],
+      [
+        "gallery-wardrobes-800.webp",
+        800
+      ],
+      [
+        "gallery-wardrobes.webp",
+        900
+      ]
+    ]
+  },
+  "boat-cockpit-interior-helm.webp": {
+    "file": "boat-cockpit-interior-helm.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "boat-cockpit-interior-helm-400.webp",
+        400
+      ],
+      [
+        "boat-cockpit-interior-helm.webp",
+        750
+      ]
+    ]
+  },
+  "wooden-shed-dark-windows-doors.webp": {
+    "file": "wooden-shed-dark-windows-doors.webp",
+    "width": 1000,
+    "height": 750,
+    "srcset": [
+      [
+        "wooden-shed-dark-windows-doors-400.webp",
+        400
+      ],
+      [
+        "wooden-shed-dark-windows-doors-800.webp",
+        800
+      ],
+      [
+        "wooden-shed-dark-windows-doors.webp",
+        1000
+      ]
+    ]
+  },
+  "white-hot-tub-composite-decking.webp": {
+    "file": "white-hot-tub-composite-decking.webp",
+    "width": 1000,
+    "height": 750,
+    "srcset": [
+      [
+        "white-hot-tub-composite-decking-400.webp",
+        400
+      ],
+      [
+        "white-hot-tub-composite-decking-800.webp",
+        800
+      ],
+      [
+        "white-hot-tub-composite-decking.webp",
+        1000
+      ]
+    ]
+  },
+  "decking.jpg": {
+    "file": "decking.webp",
+    "width": 1200,
+    "height": 900,
+    "srcset": [
+      [
+        "decking-400.webp",
+        400
+      ],
+      [
+        "decking-800.webp",
+        800
+      ],
+      [
+        "decking.webp",
+        1200
+      ]
+    ]
+  },
+  "garden-room.jpg": {
+    "file": "garden-room.webp",
+    "width": 675,
+    "height": 1200,
+    "srcset": [
+      [
+        "garden-room-400.webp",
+        400
+      ],
+      [
+        "garden-room.webp",
+        675
+      ]
+    ]
+  },
+  "wood-frame-room-construction.webp": {
+    "file": "wood-frame-room-construction.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "wood-frame-room-construction-400.webp",
+        400
+      ],
+      [
+        "wood-frame-room-construction.webp",
+        750
+      ]
+    ]
+  },
+  "gallery-door.jpg": {
+    "file": "gallery-door.webp",
+    "width": 940,
+    "height": 1200,
+    "srcset": [
+      [
+        "gallery-door-400.webp",
+        400
+      ],
+      [
+        "gallery-door-800.webp",
+        800
+      ],
+      [
+        "gallery-door.webp",
+        940
+      ]
+    ]
+  },
+  "hallway-staircase-oak-balustrade.webp": {
+    "file": "hallway-staircase-oak-balustrade.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "hallway-staircase-oak-balustrade-400.webp",
+        400
+      ],
+      [
+        "hallway-staircase-oak-balustrade.webp",
+        750
+      ]
+    ]
+  },
+  "brown-composite-garden-room-office.webp": {
+    "file": "brown-composite-garden-room-office.webp",
+    "width": 750,
+    "height": 1000,
+    "srcset": [
+      [
+        "brown-composite-garden-room-office-400.webp",
+        400
+      ],
+      [
+        "brown-composite-garden-room-office.webp",
+        750
+      ]
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tcjoinerbuilder.co.uk/sitemap.xml

@@ -1,3 +1,9 @@
 [build]
-  command = ""
-  publish = "."
+  command = "python3 scripts/build.py && python3 scripts/check_site.py"
+  publish = "public"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true

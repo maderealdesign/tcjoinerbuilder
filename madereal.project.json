@@ -3,7 +3,7 @@
   "name": "tcjoinery",
   "type": "live-site",
   "status": "live",
-  "client": "",
+  "client": "Tom Cutts Joinery & Building",
   "localPath": "/Users/dom/Library/CloudStorage/OneDrive-Personal/madereal/Madereal 2026/Websites/tcjoinery",
   "githubRepo": "https://github.com/maderealdesign/tcjoinerbuilder",
   "netlifySiteId": "3c0c8eef-6c7a-4803-a362-95fa85ba3057",
@@ -11,14 +11,14 @@
   "primaryUrl": "https://tcjoinerbuilder.co.uk",
   "customDomain": true,
   "source": {
-    "method": "static-recovery",
+    "method": "git-linked-static-source",
     "originalCandidatePath": "",
-    "consolidatedAt": ""
+    "consolidatedAt": "2026-09-28"
   },
   "footerBacklink": {
     "required": true,
-    "present": false,
+    "present": true,
     "href": "https://madereal.uk"
   },
-  "notes": ""
+  "notes": "Production source in src/ and scripts/, prepared assets in public/. Netlify publishes public/ from GitHub main. GA4 556305475; consent-gated G-D26ZBMHC24."
 }

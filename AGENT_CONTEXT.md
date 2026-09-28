@@ -17,5 +17,7 @@ Hermes workspace: /opt/hermes-clients/tcjoinery
 - Commit changes to GitHub and deploy through the configured Netlify site when asked to put changes live.
 - If unsure which file controls the visible page, check the live site and the repo structure before editing.
 
-## Google Business / Analytics
-Google Business Profile and GA4 are not linked yet unless Agentify admin shows IDs for this client. Once linked, use GBP reviews and GA4 traffic data only for this specific business.
+## Website source and reporting
+Read README.md for the source structure and build/deploy commands. Edit src/ and scripts/; public/ is the generated publish directory and contains prepared assets that must remain tracked. Root legacy HTML is not deployed.
+
+GA4 is configured: property 556305475, measurement ID G-D26ZBMHC24, consent gated. Search Console is verified for this domain. Do not claim Google Business Profile administrative access merely because public reviews are linked. Use only this client's reporting data. Contact destination is tcuttsjoinery@outlook.com.
