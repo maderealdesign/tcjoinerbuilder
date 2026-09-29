@@ -2,7 +2,7 @@
 import re
 
 
-def compact_homepage(home):
+def compact_homepage(home, image):
     def replace(old, new):
         nonlocal home
         if home.count(old) != 1:
@@ -24,7 +24,7 @@ def compact_homepage(home):
         'Real garden rooms, decking and interiors from our project gallery. Take a closer look.': 'Real projects. Take a closer look.',
         'Our project photos show the details that sit behind the completed space, from timber framing and exterior preparation to cladding and glazing.': 'Framing, cladding and glazing: the details behind the finish.',
         'Joinery &amp; building services for the whole home.': 'More for your home.',
-        'One room or a wider renovation, we bring the same attention to the practical details. Explore our domestic and commercial services, then tell us what you have in mind.': 'Explore our joinery, renovation and building services.',
+        'One room or a wider renovation, we bring the same attention to the practical details. Explore our domestic and commercial services, then tell us what you have in mind.': 'Joinery, fitting &amp; building work.',
         'Fitted wardrobes, alcove storage, staircases and finishing joinery, made to work with your home.': 'Fitted storage, wardrobes, staircases and finishing details.',
         'Media walls, fitted shelving and decorative panelling that bring a room together.': 'Media walls, shelving and decorative wall panelling.',
         'Kitchen installation, cabinetry, worktops and the finishing details, with associated trades coordinated where needed.': 'Kitchen installation, worktops and finishing joinery.',
@@ -58,14 +58,25 @@ def compact_homepage(home):
     shorter = re.sub(r'(<figcaption><h3>.*?</h3>)<p>.*?</p>', r'\1', gallery)
     replace(gallery, shorter)
 
-    # One clear link per service card avoids repeating a second long link label.
+    # Service photos decorate the links; the stock kitchen image is clearly labelled.
+    service_photos = {
+        'Bespoke joinery': ('gallery-wardrobes.jpg', 'joinery'),
+        'Media walls &amp; panelling': ('gallery-media-wall.jpg', 'media-walls'),
+        'Kitchen fitting': ('kitchen-inspiration.webp', 'kitchens'),
+        'Extensions & conversions': ('gallery-extension.jpg', 'extensions'),
+        'Home renovations': ('hallway-staircase-oak-balustrade.webp', 'renovations'),
+        'Commercial work': ('worker-installing-cedar-cladding.webp', 'commercial'),
+    }
     def service_card(match):
         card = match.group(0)
         title = re.search(r'<h3>(.*?)</h3>', card, re.S).group(1)
         title = {'Bespoke joinery & fitted storage': 'Bespoke joinery', 'Media walls & wall panelling': 'Media walls &amp; panelling', 'Commercial joinery & site work': 'Commercial work'}.get(title, title)
-        paragraph = re.search(r'<p>(.*?)</p>', card, re.S).group(1)
         href = re.search(r'<a class="text-link" href="([^"]+)"', card).group(1)
-        return f'<a class="service-card" href="{href}"><h3>{title}<span aria-hidden="true"> ↗</span></h3><p>{paragraph}</p></a>'
+        photo, key = service_photos[title]
+        backdrop = image(photo, '').replace('<img ', '<img class="service-card-photo" ', 1)
+        arrow = '<span class="service-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span>'
+        note = '<span class="service-photo-note">Inspiration photo</span>' if key == 'kitchens' else ''
+        return f'<a class="service-card service-photo-tile tile-{key}" href="{href}">{backdrop}{arrow}{note}<h3>{title}</h3></a>'
     home = re.sub(r'<article class="service-card">.*?</article>', service_card, home, flags=re.S)
     replace('<div class="review-grid">', '<div class="review-grid" tabindex="0" role="region" aria-label="Customer reviews — scroll sideways on a phone to read more">')
 

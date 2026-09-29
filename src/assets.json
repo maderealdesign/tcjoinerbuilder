@@ -380,5 +380,24 @@
         750
       ]
     ]
+  },
+  "kitchen-inspiration.webp": {
+    "file": "kitchen-inspiration.webp",
+    "width": 800,
+    "height": 533,
+    "srcset": [
+      [
+        "kitchen-inspiration-400.webp",
+        400
+      ],
+      [
+        "kitchen-inspiration.webp",
+        800
+      ]
+    ],
+    "source": "https://unsplash.com/photos/a-kitchen-with-a-stove-top-oven-next-to-a-sink-BpMNtAska4g",
+    "photographer": "Michael Le",
+    "license": "https://unsplash.com/license",
+    "usage": "Stock kitchen inspiration, visibly labelled; not a Tom Cutts project."
   }
 }

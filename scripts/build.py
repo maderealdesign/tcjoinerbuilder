@@ -108,7 +108,7 @@ for key,label in [('joinery','Explore bespoke joinery'),('joinery','Explore medi
  if match:home=home[:match.start()]+match.group(1)+services[key]['path']+match.group(2)+label+match.group(3)+home[match.end():]
 home=home.replace('</div></section>\n<section class="section light build-detail">','</div><div class="gallery-project-links"><a href="/gallery">View the full project gallery ↗</a><a href="/projects/garden-rooms">Garden room details ↗</a><a href="/projects/decking">Decking details ↗</a></div></section>\n<section class="section light build-detail">',1)
 home=home.replace('These are a few useful starting points.</p>','These are a few useful starting points.</p><a class="text-link" href="/guides">Read our project guides ↗</a>')
-home=optimize_images(compact_homepage(home))
+home=optimize_images(compact_homepage(home, image))
 render('/','Garden Rooms, Decking & Joinery in Colne | Tom Cutts','Garden rooms, decking and bespoke joinery in Colne, Clitheroe, Whalley and the Ribble Valley. 18+ years’ experience. Contact Tom for a free quotation.',home,hero_home=True)
 # Seven distinct service pages using the real business scope and photo evidence.
 for key,d in services.items():

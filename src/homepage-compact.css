@@ -29,12 +29,21 @@
 .home-page .build-grid img{height:clamp(190px,31svh,270px)}
 .home-page .build-grid figcaption{padding-top:14px}
 .home-page .service-grid{gap:14px}
-.home-page .service-card{padding:20px}
-.home-page .service-card .number{display:none}
-.home-page .service-card h3{font-size:18px}
-.home-page .service-card h3 span{color:var(--accent)}
-.home-page .service-card:hover{border-color:var(--accent);color:var(--dark)}
-.home-page .service-card p{margin:10px 0 12px}
+.home-page .service-photo-tile{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(175px,25svh,210px);padding:22px;justify-content:flex-end;background:var(--dark);border:0;color:#fff}
+.home-page .service-photo-tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,23,42,.1) 15%,rgba(15,23,42,.28) 40%,rgba(15,23,42,.9) 100%)}
+.home-page .service-card-photo{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;z-index:-2;transition:transform .3s ease}
+.home-page .service-photo-tile h3{font-size:20px;color:#fff;line-height:1.25;max-width:95%;text-shadow:0 1px 5px #0f172a80}
+.home-page .service-photo-tile:hover,.home-page .service-photo-tile:focus-visible{color:#fff}
+.home-page .service-photo-tile:hover .service-card-photo,.home-page .service-photo-tile:focus-visible .service-card-photo{transform:scale(1.035)}
+.home-page .service-card-arrow{position:absolute;right:14px;top:14px;width:32px;height:32px;display:grid;place-items:center;background:#1e293bcc;border:1px solid #ffffff80;border-radius:50%}
+.home-page .service-card-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.home-page .service-photo-note{position:absolute;left:14px;top:14px;padding:3px 6px;border-radius:3px;background:#1e293bcc;color:#fff;font-size:11px;line-height:1.4}
+.home-page .tile-joinery .service-card-photo{object-position:center 60%}
+.home-page .tile-media-walls .service-card-photo{object-position:56% 35%}
+.home-page .tile-extensions .service-card-photo{object-position:center 45%}
+.home-page .tile-kitchens .service-card-photo{object-position:center 55%}
+.home-page .tile-renovations .service-card-photo{object-position:center 55%}
+.home-page .tile-commercial .service-card-photo{object-position:50% 85%}
 .home-page .about-grid{grid-template-columns:minmax(210px,.65fr) minmax(0,1.35fr);gap:48px;max-width:1000px;margin-inline:auto}
 .home-page .about-image{width:min(100%,280px);justify-self:center}
 .home-page .about-image img{height:auto;aspect-ratio:4/5;object-position:center 80%;border-radius:8px}
@@ -102,10 +111,13 @@
  .home-page .build-grid h3{font-size:13px;line-height:1.4}
  .home-page .build-grid p{display:none}
  .home-page .service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
- .home-page .service-card{padding:16px}
- .home-page .service-card h3{font-size:16px}
- .home-page .service-card p{font-size:12px;line-height:1.6;margin:10px 0}
- .home-page .service-card .text-link{font-size:12px;line-height:1.45}
+ .home-page .service-photo-tile{min-height:156px;padding:14px}
+ .home-page .service-photo-note{left:10px;top:10px;font-size:10px}
+ .home-page .tile-joinery .service-card-photo{object-position:center 55%}
+ .home-page .tile-media-walls .service-card-photo{object-position:56% 40%}
+ .home-page .tile-extensions .service-card-photo{object-position:center 50%}
+ .home-page .service-photo-tile h3{font-size:16px;max-width:100%}
+ .home-page .service-card-arrow{width:28px;height:28px;right:10px;top:10px}
  .home-page #about{padding:28px 0}
  .home-page .about-grid{grid-template-columns:minmax(96px,.45fr) minmax(0,1fr);align-items:start}
  .home-page .about-image img{height:auto;aspect-ratio:563/1000;object-position:center}
@@ -144,6 +156,7 @@
  .home-page .contact-form input,.home-page .contact-form select,.home-page .contact-form textarea{font-size:16px;padding:9px}
 }
 @media(max-width:370px){.home-page .service-card{padding:12px}.home-page .service-card h3{font-size:15px}.home-page .form-row{grid-template-columns:1fr}.home-page .reviews .section-head{grid-template-columns:1fr}.home-page .hero .eyebrow{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.home-page .service-photo-tile .service-card-photo{transition:none!important;transform:none!important}}
 
 /* Clear chapter boundaries, with one subject per section. */
 .home-page main>section:not(.hero){border-top:1px solid #dce2ea}
