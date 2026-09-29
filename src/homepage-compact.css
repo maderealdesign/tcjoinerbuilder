@@ -178,11 +178,22 @@
 .home-page #reviews .eyebrow{color:#ff8aa1}
 .home-page #reviews .rating-summary strong{font-size:36px}
 .home-page #reviews .rating-summary p,.home-page #reviews .rating-summary strong span,.home-page #reviews .review-footer p{color:#cbd5e1}
-.home-page #reviews .stars{color:#ffc85a}
-.home-page #reviews .review-card{border:0;border-left:2px solid #536278;border-radius:0;background:transparent;padding:0 22px}
-.home-page #reviews .review-card blockquote{font-size:19px;margin:0 0 20px}
-.home-page #reviews .review-card figcaption{color:#fff}
-.home-page #reviews .review-card figcaption a{color:#cbd5e1;border-color:#64748b}
+.home-page #reviews .stars{color:#fbbc04;font-size:21px;letter-spacing:1px;line-height:1.3}
+.home-page #reviews .google-mark{width:24px;height:24px;flex-shrink:0}
+.home-page #reviews .google-review-brand{display:flex;align-items:center;justify-content:flex-end;gap:8px;font-size:15px;font-weight:600;margin-bottom:8px}
+.home-page #reviews .google-review-brand .google-mark{background:#fff;border-radius:50%;padding:4px;width:30px;height:30px}
+.home-page #reviews .review-card{display:flex;flex-direction:column;gap:16px;border:1px solid #e5e7eb;border-radius:12px;background:#fff;color:#202124;padding:24px;box-shadow:0 3px 12px #0f172a18}
+.home-page #reviews .review-card figcaption{display:flex;flex-direction:row;align-items:center;gap:12px;color:#202124;margin:0}
+.home-page #reviews .review-avatar{display:grid;place-items:center;flex:0 0 40px;height:40px;border-radius:50%;color:#fff;font-family:Arial,sans-serif;font-size:20px;font-weight:500}
+.home-page #reviews .avatar-teal{background:#00796b}
+.home-page #reviews .avatar-purple{background:#7b1fa2}
+.home-page #reviews .avatar-blue{background:#3367d6}
+.home-page #reviews .review-author{display:flex;flex-direction:column;flex:1;min-width:0;line-height:1.4}
+.home-page #reviews .review-author strong{font-size:14px;font-weight:700}
+.home-page #reviews .review-author>span{font-size:12px;color:#5f6368;margin-top:3px}
+.home-page #reviews .review-card blockquote{font-family:'Open Sans',sans-serif;font-size:15px;font-weight:400;line-height:1.65;margin:0;letter-spacing:0;flex:1}
+.home-page #reviews .google-review-link a{font-size:12px;color:#1967d2;border-bottom:1px solid transparent;padding-bottom:2px}
+.home-page #reviews .google-review-link a:hover{border-bottom-color:currentColor}
 .home-page #reviews .review-footer{border-top:1px solid #475569;padding-top:18px;margin-top:26px}
 .home-page #reviews .review-footer .text-link{color:#fff}
 .home-page .about p strong{font-weight:700;color:#fff}
@@ -203,8 +214,15 @@
  .home-page .about .eyebrow{font-size:9px;letter-spacing:1px}
  .home-page .about p{font-size:13px;line-height:1.7}
  .home-page .about .text-link{font-size:12px}
- .home-page #reviews .review-card{padding:0 18px}
- .home-page #reviews .review-card blockquote{font-size:18px}
+ .home-page #reviews .review-card{padding:20px;gap:14px}
+ .home-page #reviews .review-card blockquote{font-size:14px}
+ .home-page #reviews .section-head{grid-template-columns:1fr;gap:20px}
+ .home-page #reviews .rating-summary{text-align:left}
+ .home-page #reviews .rating-summary>a{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center}
+ .home-page #reviews .google-review-brand{grid-column:1/-1;justify-content:flex-start;margin-bottom:2px}
+ .home-page #reviews .rating-summary p{grid-column:1/-1;max-width:none}
+ .home-page #reviews .rating-summary .stars{justify-self:start}
+ .home-page #reviews .review-card figcaption{justify-content:initial}
  .home-page #reviews .review-footer{margin-top:18px;padding-top:14px}
  .home-page #reviews .rating-summary strong{font-size:30px}
 }
