@@ -31,8 +31,8 @@ def compact_homepage(home):
         'Home extensions and garage conversions, with the scope, structural requirements and project management planned from the start.': 'Home extensions, garage conversions and project management.',
         'Single-room improvements and wider refurbishments, bringing building alterations and interior joinery together.': 'Room improvements, building alterations and wider refurbishments.',
         'Fit-outs, new-build work, restoration and site management for developers, housing providers and commercial clients.': 'Fit-outs, restoration, new builds and site management.',
-        'Established in 2020.<br>Backed by 18+ years of experience.': '18+ years of experience.<br>Established in 2020.',
-        '<p>Founded by Tom Cutts in 2020, our team brings 18+ years of hands-on construction and site management experience to homes and commercial projects.</p><p>From bespoke joinery to heritage restoration, we combine careful finishing with the practical experience to manage a bigger build.</p><p>Expect clear communication, respect for your property and an honest quotation.</p>': '<p>Founded by Tom Cutts, we bring hands-on joinery and site management experience to domestic and commercial projects.</p><p>Clear communication. Careful finishing. An honest quotation.</p><a class="text-link" href="/about">More about Tom &amp; the team ↗</a>',
+        'Established in 2020.<br>Backed by 18+ years of experience.': 'Experience you<br>can build on.',
+        '<p>Founded by Tom Cutts in 2020, our team brings 18+ years of hands-on construction and site management experience to homes and commercial projects.</p><p>From bespoke joinery to heritage restoration, we combine careful finishing with the practical experience to manage a bigger build.</p><p>Expect clear communication, respect for your property and an honest quotation.</p>': '<p>Tom has <strong>18+ years of joinery and building experience.</strong> He founded Tom Cutts Joinery &amp; Building in <strong>2020.</strong></p><p>Today, the team handles domestic and commercial projects with the same care for the details.</p><a class="text-link" href="/about">Meet Tom &amp; the team ↗</a>',
         '<p>From a small domestic job to a major commercial build, the principles behind our work stay the same.</p>': '',
         'Our experience extends to local authorities, housing associations and private developers, including work with Bury Council and Muir Housing. Tom’s background includes care-home builds and heritage restoration projects valued at over £1 million.': 'Work with Bury Council and Muir Housing, plus Tom’s experience on care-home builds and heritage restoration projects valued at over £1 million.',
         'From the Ribble Valley to Silsden &amp; Cross Hills.': 'Local to you.',
@@ -67,8 +67,22 @@ def compact_homepage(home):
         href = re.search(r'<a class="text-link" href="([^"]+)"', card).group(1)
         return f'<a class="service-card" href="{href}"><h3>{title}<span aria-hidden="true"> ↗</span></h3><p>{paragraph}</p></a>'
     home = re.sub(r'<article class="service-card">.*?</article>', service_card, home, flags=re.S)
-    replace('<p>Clear communication. Careful finishing. An honest quotation.</p>', '')
     replace('<div class="review-grid">', '<div class="review-grid" tabindex="0" role="region" aria-label="Customer reviews — scroll sideways on a phone to read more">')
+
+    # Give coverage, the enquiry process and customer reviews separate purposes.
+    local = re.search(r'<section class="section light"><div class="wrap local-grid">.*?</section>', home, re.S).group(0)
+    replace(local, '''<section class="section coverage-section" id="coverage"><div class="wrap coverage-grid"><div><div class="eyebrow">Where we work</div><h2>Local to you.</h2></div><div><p>Based in Colne, serving Lancashire and the Ribble Valley, and towards Silsden, Sutton and Cross Hills.</p><a class="text-link" href="/areas-we-cover">See all areas we cover ↗</a></div></div></section>
+<section class="section process-section" id="how-it-works"><div class="wrap"><div class="process-heading"><div class="eyebrow">A straightforward start</div><h2>Your project, in three steps.</h2></div><ol class="project-steps"><li><span aria-hidden="true">01</span><div><h3>Share your idea</h3><p>Send photos, your postcode and a rough budget.</p></div></li><li><span aria-hidden="true">02</span><div><h3>Agree your quote</h3><p>We agree the work, materials and timing.</p></div></li><li><span aria-hidden="true">03</span><div><h3>Build &amp; hand over</h3><p>We keep you updated through to the finish.</p></div></li></ol></div></section>''')
+    replace('A reputation built<br>on the work.', 'Trusted by<br>our customers.')
+    reviews = re.search(r'<section class="section light reviews".*?</section>', home, re.S).group(0)
+    reviews_simple = re.sub(r'<div class="review-source">.*?</div>', '', reviews)
+    replace(reviews, reviews_simple)
+
+    # A real work photograph, not an implied portrait of Tom or a decorative strip.
+    about = re.search(r'<section class="section about".*?</section>', home, re.S).group(0)
+    about_simple = about.replace('Craftsmanship in the details · The work behind the finish', 'Our team at work · timber cladding')
+    about_simple = re.sub(r'<div class="signature">.*?</div>', '', about_simple)
+    replace(about, about_simple)
 
     # Four useful starting questions; the service pages retain the fuller answers.
     faq = re.search(r'<section[^>]*id="questions".*?</section>', home, re.S).group(0)
@@ -79,4 +93,7 @@ def compact_homepage(home):
 
     # Keep the real form and all fields, with contact details sharing a row.
     home = re.sub(r'(<label for="email"[^>]*>.*?</label>)(<label for="phone">.*?</label>)', r'<div class="form-row">\1\2</div>', home, count=1, flags=re.S)
+    # Titles stay readable without JavaScript; motion is progressive enhancement.
+    home = home.replace('<h2>', '<h2 class="section-title">')
+    replace('<h3>The room. The deck. The whole idea.</h3>', '<h3 class="section-title">The room. The deck. The whole idea.</h3>')
     return home

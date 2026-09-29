@@ -1,5 +1,5 @@
 'use strict';
-const analyticsId = '__GA_MEASUREMENT_ID__';
+const analyticsId = 'G-D26ZBMHC24';
 const production = location.hostname === 'tcjoinerbuilder.co.uk' || location.hostname === 'www.tcjoinerbuilder.co.uk';
 const consentKey = 'tc-analytics-consent-v1';
 let consent = 'denied';

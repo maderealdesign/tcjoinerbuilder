@@ -35,8 +35,10 @@
 .home-page .service-card h3 span{color:var(--accent)}
 .home-page .service-card:hover{border-color:var(--accent);color:var(--dark)}
 .home-page .service-card p{margin:10px 0 12px}
-.home-page .about-grid{gap:48px}
-.home-page .about-image img{height:clamp(270px,46svh,360px)}
+.home-page .about-grid{grid-template-columns:minmax(210px,.65fr) minmax(0,1.35fr);gap:48px;max-width:1000px;margin-inline:auto}
+.home-page .about-image{width:min(100%,280px);justify-self:center}
+.home-page .about-image img{height:auto;aspect-ratio:4/5;object-position:center 80%;border-radius:8px}
+.home-page .about-image figcaption{position:static;border:0;background:transparent;padding:10px 0 0;color:#cbd5e1;font-size:11px;line-height:1.5}
 .home-page .about p{margin-top:16px}
 .home-page .about .text-link{margin-top:12px}
 .home-page .signature{padding-top:14px;margin-top:16px}
@@ -105,8 +107,9 @@
  .home-page .service-card p{font-size:12px;line-height:1.6;margin:10px 0}
  .home-page .service-card .text-link{font-size:12px;line-height:1.45}
  .home-page #about{padding:28px 0}
- .home-page .about-image img{height:130px;object-position:center 48%}
- .home-page .about-image figcaption{font-size:10px;padding:8px 12px;bottom:12px;left:12px;right:12px}
+ .home-page .about-grid{grid-template-columns:minmax(96px,.45fr) minmax(0,1fr);align-items:start}
+ .home-page .about-image img{height:auto;aspect-ratio:563/1000;object-position:center}
+ .home-page .about-image figcaption{font-size:10px;padding:8px 0 0}
  .home-page .about h2{font-size:28px}
  .home-page .about p{margin-top:12px}
  .home-page .signature{display:flex;flex-wrap:wrap;align-items:center;gap:5px 16px;padding-top:12px;margin-top:12px}
@@ -141,3 +144,54 @@
  .home-page .contact-form input,.home-page .contact-form select,.home-page .contact-form textarea{font-size:16px;padding:9px}
 }
 @media(max-width:370px){.home-page .service-card{padding:12px}.home-page .service-card h3{font-size:15px}.home-page .form-row{grid-template-columns:1fr}.home-page .reviews .section-head{grid-template-columns:1fr}.home-page .hero .eyebrow{font-size:7px}}
+
+/* Clear chapter boundaries, with one subject per section. */
+.home-page main>section:not(.hero){border-top:1px solid #dce2ea}
+.home-page .build-detail{background:#eef2f6}
+.home-page #services{background:#fff}
+.home-page .section-title::after{content:"";display:block;width:48px;height:3px;background:var(--accent);margin-top:15px;transform-origin:left}
+.home-page .coverage-section{background:#fff}
+.home-page .coverage-grid{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:60px}
+.home-page .coverage-grid p{max-width:550px}
+.home-page .coverage-grid .text-link{margin-top:12px}
+.home-page .process-section{background:#fff3f5;border-top-color:#f6c8d1!important}
+.home-page .process-heading{margin-bottom:28px}
+.home-page .project-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.home-page .project-steps li{display:grid;grid-template-columns:38px 1fr;gap:12px}
+.home-page .project-steps li>span{font-family:Montserrat,sans-serif;font-weight:700;font-size:20px;color:#b92041}
+.home-page .project-steps h3{font-size:18px}
+.home-page .project-steps p{font-size:14px;margin-top:7px;max-width:270px}
+.home-page #reviews{background:var(--dark);color:#fff;border-top:0}
+.home-page #reviews .eyebrow{color:#ff8aa1}
+.home-page #reviews .rating-summary strong{font-size:36px}
+.home-page #reviews .rating-summary p,.home-page #reviews .rating-summary strong span,.home-page #reviews .review-footer p{color:#cbd5e1}
+.home-page #reviews .stars{color:#ffc85a}
+.home-page #reviews .review-card{border:0;border-left:2px solid #536278;border-radius:0;background:transparent;padding:0 22px}
+.home-page #reviews .review-card blockquote{font-size:19px;margin:0 0 20px}
+.home-page #reviews .review-card figcaption{color:#fff}
+.home-page #reviews .review-card figcaption a{color:#cbd5e1;border-color:#64748b}
+.home-page #reviews .review-footer{border-top:1px solid #475569;padding-top:18px;margin-top:26px}
+.home-page #reviews .review-footer .text-link{color:#fff}
+.home-page .about p strong{font-weight:700;color:#fff}
+@keyframes home-title-enter{from{transform:translateY(12px);opacity:.65}to{transform:translateY(0);opacity:1}}
+@keyframes home-title-line{from{transform:scaleX(.2)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:no-preference){
+ .home-page .section-title.title-entered{animation:home-title-enter .65s cubic-bezier(.2,.65,.3,1) both}
+ .home-page .section-title.title-entered::after{animation:home-title-line .8s cubic-bezier(.2,.65,.3,1) both}
+}
+@media(prefers-reduced-motion:reduce){.home-page .section-title,.home-page .section-title::after{animation:none!important;transform:none!important;opacity:1!important}}
+@media(max-width:760px){
+ .home-page .coverage-grid{grid-template-columns:1fr;gap:18px}
+ .home-page .project-steps{grid-template-columns:1fr;gap:22px}
+ .home-page .project-steps p{max-width:none}
+ .home-page .project-steps h3{font-size:17px}
+ .home-page .process-heading{margin-bottom:24px}
+ .home-page .about h2{font-size:26px}
+ .home-page .about .eyebrow{font-size:9px;letter-spacing:1px}
+ .home-page .about p{font-size:13px;line-height:1.7}
+ .home-page .about .text-link{font-size:12px}
+ .home-page #reviews .review-card{padding:0 18px}
+ .home-page #reviews .review-card blockquote{font-size:18px}
+ .home-page #reviews .review-footer{margin-top:18px;padding-top:14px}
+ .home-page #reviews .rating-summary strong{font-size:30px}
+}
