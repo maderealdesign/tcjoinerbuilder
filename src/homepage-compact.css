@@ -1,0 +1,143 @@
+/* Homepage proportions; detailed service and gallery pages keep their layouts. */
+.home-page .section{padding:clamp(32px,5svh,52px) 0}
+.home-page main h2{font-size:clamp(28px,3vw,40px);line-height:1.14}
+.home-page .eyebrow{margin-bottom:12px}
+.home-page .section-head{gap:40px;margin-bottom:24px}
+.home-page .hero{min-height:0;min-height:calc(100svh - 82px);max-height:none}
+.home-page .hero-copy{padding:44px 0 82px}
+.home-page .hero h1{font-size:clamp(40px,4.6vw,64px);max-width:780px}
+.home-page .hero p{margin:20px 0 24px;max-width:490px;font-size:16px}
+.home-page .hero .eyebrow{margin-bottom:20px}
+.home-page .intro{gap:50px;align-items:center}
+.home-page .quick-links{margin-top:15px;gap:8px 22px}
+.home-page .feature{gap:50px}
+.home-page .feature-media img{height:clamp(280px,57svh,460px)}
+.home-page .feature p{margin-top:16px}
+.home-page .feature ul{margin:16px 0}
+.home-page .feature li{padding-top:4px;padding-bottom:4px}
+.home-page .feature-media figcaption{left:16px;bottom:16px;padding:10px 13px}
+.home-page .together.photo-panel{margin:0;min-height:clamp(250px,43svh,360px);padding:32px}
+.home-page .together.photo-panel h3{font-size:30px}
+.home-page .gallery{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 54px)/4);grid-template-columns:none;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:2px;padding:4px 2px 16px;touch-action:auto}
+.home-page .project{min-width:0;scroll-snap-align:start}
+.home-page .project img{height:clamp(210px,35svh,280px)}
+.home-page .project figcaption{padding-top:12px}
+.home-page .project h3{font-size:16px}
+.home-page .gallery-hint{font-size:12px;margin:-8px 0 12px}
+.home-page .gallery-project-links{margin-top:12px;gap:8px 20px}
+.home-page .gallery-project-links a{display:inline-flex;align-items:center;min-height:44px}
+.home-page .build-grid img{height:clamp(190px,31svh,270px)}
+.home-page .build-grid figcaption{padding-top:14px}
+.home-page .service-grid{gap:14px}
+.home-page .service-card{padding:20px}
+.home-page .service-card .number{display:none}
+.home-page .service-card h3{font-size:18px}
+.home-page .service-card h3 span{color:var(--accent)}
+.home-page .service-card:hover{border-color:var(--accent);color:var(--dark)}
+.home-page .service-card p{margin:10px 0 12px}
+.home-page .about-grid{gap:48px}
+.home-page .about-image img{height:clamp(270px,46svh,360px)}
+.home-page .about p{margin-top:16px}
+.home-page .about .text-link{margin-top:12px}
+.home-page .signature{padding-top:14px;margin-top:16px}
+.home-page .trust-grid{margin-top:24px;padding-top:22px;gap:20px}
+.home-page .trust-grid strong{font-size:19px}
+.home-page .values-head.photo-panel{min-height:230px;padding:32px;margin-bottom:24px}
+.home-page .values article{padding-top:16px}
+.home-page .values p{margin-top:10px}
+.home-page .commercial{margin-top:0;padding:28px;gap:40px}
+.home-page .commercial p{margin-top:16px}
+.home-page .client-list{margin:16px 0}
+.home-page .capabilities div{padding:18px}
+.home-page .local-grid{gap:50px}
+.home-page .local-grid p{margin-top:15px}
+.home-page .towns{gap:8px;margin-top:18px}
+.home-page .towns span{padding:5px 10px;font-size:12px}
+.home-page .step p{margin-top:6px}
+.home-page .review-card{padding:22px}
+.home-page .review-card blockquote{font-size:18px;margin:18px 0}
+.home-page .review-footer{margin-top:16px}
+.home-page .faq{gap:50px}
+.home-page .faq-intro p{margin-top:16px}
+.home-page .faq-intro .text-link{margin-top:12px}
+.home-page .faq details{padding:15px 0}
+.home-page .contact-grid{gap:50px;align-items:center}
+.home-page .contact-copy p{margin-top:16px}
+.home-page .contact-info{margin-top:20px}
+.home-page .contact-actions,.home-page .social-links{margin-top:20px}
+.home-page .contact-form{padding:24px}
+.home-page .contact-form label{margin:0 0 12px!important}
+.home-page .contact-form textarea{min-height:80px}
+.home-page .contact-form .form-note{margin-bottom:16px}
+@media(max-width:760px){
+ .home-page .wrap{width:calc(100% - 36px)}
+ .home-page .hero{min-height:calc(100svh - 142px)}
+ .home-page .hero-copy{padding:36px 0 88px}
+ .home-page .hero h1{font-size:clamp(35px,9.5vw,47px);letter-spacing:-1.5px;line-height:1.08}
+ .home-page .hero p{font-size:15px;margin:18px 0 20px;max-width:330px}
+ .home-page .hero .eyebrow{font-size:8px;letter-spacing:.7px;margin-bottom:18px}
+ .home-page .hero-actions{gap:8px}
+ .home-page .hero-actions .button{font-size:12px;padding:11px 12px}
+ .home-page .hero-actions .button.ghost{background:transparent;color:#fff;border:0;padding:5px 0;flex-basis:100%;justify-content:start;min-height:36px}
+ .home-page .hero-bottom{bottom:20px}
+ .home-page .section{padding:32px 0}
+ .home-page .section-head,.home-page .intro,.home-page .feature,.home-page .about-grid,.home-page .local-grid,.home-page .faq,.home-page .contact-grid{gap:20px}
+ .home-page .section-head{margin-bottom:20px}
+ .home-page .feature-media img{height:clamp(190px,27svh,250px)}
+ .home-page .feature h2{font-size:29px}
+ .home-page .feature-media figcaption{font-size:10px;padding:7px 10px;left:12px;bottom:12px}
+ .home-page .feature p{margin-top:12px}
+ .home-page .feature ul{margin:12px 0}
+ .home-page .feature .quick-links{margin-top:8px;gap:2px 16px}
+ .home-page .feature .text-link{font-size:12px}
+ .home-page .together.photo-panel{min-height:310px;padding:24px;gap:18px}
+ .home-page .together.photo-panel h3{font-size:28px}
+ .home-page .gallery{grid-auto-columns:78%;gap:14px}
+ .home-page .project img{height:280px}
+ .home-page .gallery-project-links a{font-size:12px}
+ .home-page .build-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .home-page .build-grid img{height:150px}
+ .home-page .build-grid h3{font-size:13px;line-height:1.4}
+ .home-page .build-grid p{display:none}
+ .home-page .service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .home-page .service-card{padding:16px}
+ .home-page .service-card h3{font-size:16px}
+ .home-page .service-card p{font-size:12px;line-height:1.6;margin:10px 0}
+ .home-page .service-card .text-link{font-size:12px;line-height:1.45}
+ .home-page #about{padding:28px 0}
+ .home-page .about-image img{height:130px;object-position:center 48%}
+ .home-page .about-image figcaption{font-size:10px;padding:8px 12px;bottom:12px;left:12px;right:12px}
+ .home-page .about h2{font-size:28px}
+ .home-page .about p{margin-top:12px}
+ .home-page .signature{display:flex;flex-wrap:wrap;align-items:center;gap:5px 16px;padding-top:12px;margin-top:12px}
+ .home-page .signature strong{font-size:20px}
+ .home-page .signature small{font-size:9px}
+ .home-page .trust-grid{gap:14px;margin-top:20px;padding-top:18px}
+ .home-page .trust-grid strong{font-size:17px}
+ .home-page .trust-grid span{margin-top:3px}
+ .home-page .values-head.photo-panel{padding:24px;min-height:220px}
+ .home-page .values-head.photo-panel h2{font-size:31px}
+ .home-page .values{gap:18px}
+ .home-page .commercial{padding:22px;gap:20px}
+ .home-page .commercial h2{font-size:29px}
+ .home-page .commercial .eyebrow{font-size:9px}
+ .home-page .capabilities{gap:10px}
+ .home-page .capabilities div{padding:14px}
+ .home-page .capabilities p{display:none}
+ .home-page .steps{gap:16px}
+ .home-page .step{gap:12px;grid-template-columns:32px 1fr}
+ .home-page .review-grid{gap:12px;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:88%;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 12px;touch-action:auto}
+ .home-page .review-card{scroll-snap-align:start}
+ .home-page .review-card{padding:18px}
+ .home-page .review-card blockquote{font-size:16px;line-height:1.5;margin:12px 0}
+ .home-page .review-card figcaption{flex-direction:row;justify-content:space-between;gap:12px}
+ .home-page .reviews .section-head{grid-template-columns:1fr auto;gap:16px;align-items:center}
+ .home-page .reviews h2{font-size:26px}
+ .home-page .rating-summary strong{font-size:32px}
+ .home-page .rating-summary p{max-width:110px;font-size:10px}
+ .home-page .rating-summary .stars{font-size:16px}
+ .home-page .review-footer{gap:8px}
+ .home-page .contact-form{padding:20px}
+ .home-page .contact-form input,.home-page .contact-form select,.home-page .contact-form textarea{font-size:16px;padding:9px}
+}
+@media(max-width:370px){.home-page .service-card{padding:12px}.home-page .service-card h3{font-size:15px}.home-page .form-row{grid-template-columns:1fr}.home-page .reviews .section-head{grid-template-columns:1fr}.home-page .hero .eyebrow{font-size:7px}}

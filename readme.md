@@ -5,6 +5,8 @@ Live website: https://tcjoinerbuilder.co.uk
 ## Edit and build
 
 - `src/homepage.html`: homepage content and shared brand styles.
+- `scripts/compact_homepage.py`: shorter homepage summaries and sections; full source copy remains available to the About and Gallery pages. Exact replacements fail the build if source text changes unexpectedly.
+- `src/homepage-compact.css`: homepage-only responsive spacing, image sizing and native photo/review strips.
 - `src/services.json`: seven service pages.
 - `src/guides.json`: three researched buyer guides and the guide index.
 - `scripts/build.py`: static page templates, navigation, forms, metadata, sitemap and redirects.
