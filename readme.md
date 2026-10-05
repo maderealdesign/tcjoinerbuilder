@@ -4,7 +4,8 @@ Live website: https://tcjoinerbuilder.co.uk
 
 ## Edit and build
 
-- `src/calm-homepage.html` and `src/calm-homepage.css`: approved calm homepage, live enquiry form and brand styles.
+- `src/site-chrome.html` and `src/site-chrome.css`: the shared header, footer, navigation and typography used on every page.
+- `src/calm-homepage.html` and `src/calm-homepage.css`: approved calm homepage body, live enquiry form and brand styles.
 - `src/homepage.html` and `src/homepage-compact.css`: shared supporting-page styles and source sections for About and Gallery.
 - `src/services.json`: eight service pages.
 - `src/areas.json`: eleven individually written service-area guides.
@@ -46,3 +47,5 @@ Search Console has the verified domain property. Submit `/sitemap.xml` after a r
 Pre-launch production deploy: `6ab56547d360cc1161a23c14` (24 September 2026). Netlify retains deployment rollback; preserve the matching Git history and canonical source when rolling back. No hosting, mailbox or Google credentials are stored here.
 
 Review-request short link: `/review` redirects to the official Google Business Profile review form. The printable review kit and operational enquiry tracker are private working artifacts, not in the published directory.
+
+Navigation checks enforce one header/footer, unique titles/descriptions, all 33 indexable pages reachable within two clicks, sitemap completeness and Googlebot access. Service, location, guide and gallery pages cross-link through relevant project context. The production Netlify alias redirects to the custom domain.

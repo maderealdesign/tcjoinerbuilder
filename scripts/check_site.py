@@ -3,7 +3,9 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
-import json,xml.etree.ElementTree as ET
+import json,re,xml.etree.ElementTree as ET
+from collections import deque
+from urllib.robotparser import RobotFileParser
 ROOT=Path(__file__).resolve().parent.parent/'public';BASE='https://tcjoinerbuilder.co.uk';issues=[];pages={}
 class Page(HTMLParser):
  def __init__(self):super().__init__();self.ids=[];self.links=[];self.h1=0;self.canonical=[];self.description=[];self.robots='';self.title='';self.in_title=False;self.in_json=False;self.json='';self.schemas=[];self.forms=[];self.form=None
@@ -75,6 +77,31 @@ for d in area_data:
  if not any(f['attrs'].get('name')=='contact-enquiry' and f['fields'].get('page',{}).get('value')==path for f in pages[path].forms):issues.append(path+': missing local enquiry form')
 for service in json.loads((ROOT.parent/'src/services.json').read_text()).values():
  if service['path'] not in pages['/'].links:issues.append('Homepage missing service: '+service['path'])
+# Navigation and crawlability are release requirements, not just valid HTML.
+headers=set();footers=set()
+for f in ROOT.rglob('*.html'):
+ text=f.read_text()
+ headers.add(re.search(r'<header\b.*?</header>',text,re.S).group())
+ footers.add(re.search(r'<footer\b.*?</footer>',text,re.S).group())
+ if re.search(r'Call Tom|WhatsApp Tom',text,re.I):issues.append(str(f)+': personal contact label returned')
+if len(headers)!=1 or len(footers)!=1:issues.append('Header/footer differ between pages')
+indexable={p for p,d in pages.items() if 'noindex' not in d.robots}
+if set(urls)!={BASE+p for p in indexable} or len(urls)!=len(set(urls)):issues.append('Sitemap differs from indexable pages')
+if len({p.description[0] for p in pages.values()})!=len(pages):issues.append('Duplicate meta descriptions')
+robot=RobotFileParser();robot.parse((ROOT/'robots.txt').read_text().splitlines())
+for path in indexable:
+ if not robot.can_fetch('Googlebot',BASE+path):issues.append('Googlebot blocked: '+path)
+links={path:{urlsplit(u).path or path for u in p.links if not urlsplit(u).scheme and not urlsplit(u).netloc} & set(pages) for path,p in pages.items()}
+depths={'/':0};queue=deque(['/'])
+while queue:
+ current=queue.popleft()
+ for target in links[current]:
+  if target not in depths:depths[target]=depths[current]+1;queue.append(target)
+for path in indexable:
+ if depths.get(path,99)>2:issues.append('Page is orphaned or more than two clicks deep: '+path)
+for d in area_data:
+ for k in d['focus']:
+  if json.loads((ROOT.parent/'src/services.json').read_text())[k]['path'] not in pages['/areas/'+d['slug']].links:issues.append('Missing contextual service link for '+d['slug'])
 for issue in issues:print('FAIL',issue)
 if issues:raise SystemExit(1)
 print(f'PASS: {len(pages)} HTML pages, {len(urls)} sitemap URLs, local links, metadata, JSON-LD, images and live forms.')

@@ -22,7 +22,7 @@ def render_areas(area_data,services,render,hero,image,contact,base):
     lookup={d['slug']:d for d in area_data}
     for d in area_data:
         path='/areas/'+d['slug'];name=d['name']
-        description=f'Plan joinery and building work in {name} with Tom Cutts. Explore relevant services, a practical project checklist and local information. Free quotations.'
+        description=d['description']
         content=hero(name,'Joinery &amp; building in<br>'+escape(name)+'.',escape(d['intro']))
         content=content.replace('<a href="/">Home</a>','<a href="/">Home</a><span aria-hidden="true">/</span><a href="/areas-we-cover">Areas we cover</a>',1)
         body=''.join('<h2>'+escape(s['heading'])+'</h2><p>'+escape(s['text'])+'</p>' for s in d['sections'])
@@ -30,8 +30,18 @@ def render_areas(area_data,services,render,hero,image,contact,base):
         resource=d['resource']
         body+='<div class="local-resource"><h3>Useful local information</h3><p>'+escape(resource['note'])+'</p><a class="text-link" href="'+escape(resource['url'],quote=True)+'" target="_blank" rel="noopener">'+escape(resource['label'])+' ↗</a><p class="small-note">Confirm any permissions and specialist requirements for your property before work starts.</p></div>'
         photo='<figure>'+image(d['photo'],'Joinery and building workmanship from the Tom Cutts project gallery')+'<figcaption>Our workmanship · photographs from the wider project gallery</figcaption></figure>'
-        aside='<aside class="service-aside"><h3>Discuss your '+escape(name)+' project</h3><p>Tom and the team work from Colne. Share your postcode and plans to confirm the scope and arrange the next step.</p><a class="button" href="#contact">Request a quotation ↗</a><a class="text-link" href="tel:07816937159">Call 07816 937 159</a><a class="text-link" href="https://wa.me/447816937159" target="_blank" rel="noopener">Send photos on WhatsApp ↗</a><p>18+ years’ experience · Up to £5m public liability cover</p></aside>'
+        aside='<aside class="service-aside"><h3>Discuss your '+escape(name)+' project</h3><p>Our joinery and building team works from Colne. Share your postcode and plans to confirm the scope and arrange the next step.</p><a class="button" href="#contact">Request a quotation ↗</a><a class="text-link" href="tel:07816937159">Call 07816 937 159</a><a class="text-link" href="https://wa.me/447816937159" target="_blank" rel="noopener">Send photos on WhatsApp ↗</a><p>18+ years’ experience · Up to £5m public liability cover</p></aside>'
+        # Link to relevant evidence and planning help without claiming these jobs were in this town.
+        primary=d['focus'][0]
+        collection={'garden-rooms':'garden-rooms','decking':'decking','joinery':'interior-joinery','media-walls':'interior-joinery','renovations':'interior-joinery','kitchens':'interior-joinery'}.get(primary)
+        evidence='/projects/'+collection if collection else '/gallery'
+        evidence_label={'garden-rooms':'garden-room construction photographs','decking':'decking and outdoor project photographs','interior-joinery':'fitted joinery and interior photographs'}.get(collection,'our wider project gallery')
+        body+='<aside class="context-links"><h2>Ideas for your '+escape(name)+' project</h2><p>Explore <a href="'+evidence+'">'+evidence_label+'</a> to choose the details you would like to discuss.</p>'
+        if 'decking' in d['focus']:body+='<p>Considering an outdoor space? Our <a href="/guides/timber-or-composite-decking">timber and composite decking guide</a> explains the material and maintenance questions to compare.</p>'
+        elif 'garden-rooms' in d['focus']:body+='<p>Planning a room outside? Read <a href="/guides/garden-room-costs">what affects a garden-room quotation</a> before deciding on size and specification.</p>'
+        else:body+='<p>For a wider brief, see <a href="/services">all our joinery and building services</a> and tell us which jobs need to be coordinated.</p>'
+        body+='</aside>'
         content+='<section class="section wrap service-layout area-content"><article class="page-content">'+body+photo+'</article>'+aside+'</section>'
-        content+='<section class="section light"><div class="wrap"><h2>Explore the work you’re planning.</h2><div class="related-grid">'+''.join('<article class="related-card"><h3><a href="'+services[k]['path']+'">'+escape(services[k]['title'].split('|')[0].strip())+'</a></h3><p>'+escape(services[k]['description'])+'</p></article>' for k in d['focus'])+'</div><nav class="area-buttons" aria-label="Nearby areas">'+''.join('<a href="/areas/'+n+'">'+escape(lookup[n]['name'])+'</a>' for n in d['nearby'])+'</nav></div></section>'
+        content+='<section class="section light"><div class="wrap"><h2>Explore the work you’re planning.</h2><div class="related-grid">'+''.join('<article class="related-card"><h3><a href="'+services[k]['path']+'">'+escape(services[k]['title'].split('|')[0].strip())+'</a></h3><p>'+escape(services[k]['description'])+'</p></article>' for k in d['focus'])+'</div><h3 style="margin-top:30px">Nearby service areas</h3><nav class="area-buttons" aria-label="Nearby areas">'+''.join('<a href="/areas/'+n+'">'+escape(lookup[n]['name'])+'</a>' for n in d['nearby'])+'</nav></div></section>'
         content+=contact.replace('homepage-enquiry','contact-enquiry').replace('value="/"','value="'+path+'"')
         render(path,d['title'],description,content,name,extra={'@type':'Service','name':'Joinery and building in '+name,'provider':{'@id':base+'/#business'},'areaServed':{'@type':'Place','name':name},'url':base+path})

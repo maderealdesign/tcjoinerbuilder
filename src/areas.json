@@ -34,7 +34,8 @@
       "garden-rooms",
       "decking",
       "joinery"
-    ]
+    ],
+    "description": "Joinery and building from our Colne base. Plan a garden room, decking or fitted storage with a practical site brief and a free project quotation."
   },
   {
     "slug": "pendle",
@@ -71,7 +72,8 @@
       "extensions",
       "renovations",
       "garden-rooms"
-    ]
+    ],
+    "description": "Plan extensions, renovations and garden rooms across Pendle. Joinery, building work and trade coordination from our Colne-based team."
   },
   {
     "slug": "clitheroe",
@@ -108,7 +110,8 @@
       "garden-rooms",
       "joinery",
       "media-walls"
-    ]
+    ],
+    "description": "Garden offices, fitted joinery and media walls in Clitheroe. Explore room layouts, property considerations and a free quotation from our team."
   },
   {
     "slug": "whalley",
@@ -145,7 +148,8 @@
       "decking",
       "garden-rooms",
       "renovations"
-    ]
+    ],
+    "description": "Connect your Whalley home and garden with decking, a garden room or renovation. Explore access, levels and local property guidance before a quote."
   },
   {
     "slug": "barrow",
@@ -182,7 +186,8 @@
       "joinery",
       "media-walls",
       "decking"
-    ]
+    ],
+    "description": "Fitted storage, media walls and decking in Barrow, Ribble Valley. Plan the space inside and outside your home with our Colne-based joinery team."
   },
   {
     "slug": "ribble-valley",
@@ -220,7 +225,8 @@
       "garden-rooms",
       "decking",
       "extensions"
-    ]
+    ],
+    "description": "Garden rooms, decking and building projects across the Ribble Valley. Discuss site access, connected outdoor work and coverage for your postcode."
   },
   {
     "slug": "silsden",
@@ -257,7 +263,8 @@
       "garden-rooms",
       "renovations",
       "joinery"
-    ]
+    ],
+    "description": "Garden rooms, joinery and renovations in Silsden. Prepare for a useful site visit and check local property information with our project guide."
   },
   {
     "slug": "sutton-in-craven",
@@ -294,13 +301,14 @@
       "renovations",
       "kitchens",
       "joinery"
-    ]
+    ],
+    "description": "Kitchen fitting, fitted joinery and home improvements in Sutton-in-Craven. Prepare a room-by-room brief and clarify installation work for your quote."
   },
   {
     "slug": "cross-hills",
     "name": "Cross Hills",
     "title": "Decking & Garden Rooms in Cross Hills | Tom Cutts",
-    "intro": "Cross Hills is part of the area we serve towards Silsden and Sutton-in-Craven. For a garden-room or decking enquiry, Our team can begin with photographs and approximate dimensions before discussing a visit from our Colne base. A clear outline of the whole outdoor project helps us plan the right next step.",
+    "intro": "Cross Hills is part of the area we serve towards Silsden and Sutton-in-Craven. For a garden-room or decking enquiry, our team can begin with photographs and approximate dimensions before discussing a visit from our Colne base. A clear outline of the whole outdoor project helps us plan the right next step.",
     "sections": [
       {
         "heading": "Compare a complete deck specification",
@@ -331,7 +339,8 @@
       "decking",
       "garden-rooms",
       "extensions"
-    ]
+    ],
+    "description": "Decking and garden rooms in Cross Hills. Compare a complete deck specification and plan future garden improvements with our joinery and building team."
   },
   {
     "slug": "burnley",
@@ -368,7 +377,8 @@
       "media-walls",
       "renovations",
       "joinery"
-    ]
+    ],
+    "description": "Media walls, fitted interiors and home renovations in Burnley. Plan equipment, storage and the scope of your project before requesting a quotation."
   },
   {
     "slug": "lancashire",
@@ -406,6 +416,7 @@
       "commercial",
       "garden-rooms",
       "decking"
-    ]
+    ],
+    "description": "Domestic and commercial joinery across Lancashire from our Colne base. Discuss your project scope, site management and coverage with our team."
   }
 ]

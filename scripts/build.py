@@ -13,6 +13,10 @@ guides=json.loads((SRC/'guides.json').read_text())
 raw=(SRC/'homepage.html').read_text()
 calm=(SRC/'calm-homepage.html').read_text()
 area_data=json.loads((SRC/'areas.json').read_text())
+chrome=(SRC/'site-chrome.html').read_text()
+chrome_css=(SRC/'site-chrome.css').read_text()
+CHROME_CSS='chrome-'+hashlib.sha256(chrome_css.encode()).hexdigest()[:10]+'.css'
+(OUT/'assets'/CHROME_CSS).write_text(chrome_css)
 map_js=(SRC/'coverage-map.js').read_text().replace('__MAP_POINTS__',json.dumps(json.loads((SRC/'map-points.json').read_text())['points']))
 MAP_JS='coverage-map-'+hashlib.sha256(map_js.encode()).hexdigest()[:10]+'.js'
 (OUT/'assets'/MAP_JS).write_text(map_js)
@@ -38,12 +42,8 @@ css+='''
 '''
 CSS_FILE='site-'+hashlib.sha256(css.encode()).hexdigest()[:10]+'.css'
 (OUT/'assets'/CSS_FILE).write_text(css)
-nav='''<header class="header"><div class="wrap nav"><a class="brand" href="/" aria-label="Tom Cutts homepage"><strong>Tom Cutts</strong><small>JOINERY &amp; BUILDING</small></a><nav class="nav-links" id="navigation" aria-label="Main navigation"><a href="/">Home</a><a href="/about">About</a><a href="/services">Services</a><a href="/commercial">Commercial</a><a href="/gallery">Gallery</a><a href="/#reviews">Reviews</a><a href="/areas-we-cover">Areas</a></nav><a class="button" href="tel:07816937159">07816 937 159 ↗</a><button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button></div></header>'''
-footer=re.search(r'<footer class="footer">.*?</footer>',raw,re.S).group(0)
-for a,b in [('href="#home"','href="/"'),('href="#about"','href="/about"'),('href="#services"','href="/services"'),('href="#gallery"','href="/gallery"'),('href="#contact"','href="/contact"')]:footer=footer.replace(a,b)
-footer=footer.replace(' · Homepage design preview','')
-settings='<button class="cookie-settings" type="button" data-cookie-settings>Cookie settings</button>' if analytics.get('measurementId') else ''
-footer=footer.replace('</footer>',f'<div class="wrap footer-legal"><a href="/guides">Project guides</a><a href="/privacy">Privacy &amp; cookies</a><a href="/areas-we-cover">Areas we cover</a>{settings}<span>Website by <a href="https://madereal.uk" rel="noopener">madereal.uk</a></span></div></footer>')
+nav=re.search(r'<header-template>(.*?)</header-template>',chrome,re.S).group(1)
+footer=re.search(r'<footer-template>(.*?)</footer-template>',chrome,re.S).group(1)
 quick=re.search(r'<div class="quick-contact".*?</div>',raw,re.S).group(0)
 contact=re.search(r'<section class="section contact".*?</section>',raw,re.S).group(0)
 contact=contact.replace('id="preview-form"','id="enquiry-form" name="homepage-enquiry" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field"')
@@ -87,19 +87,24 @@ def render(path,title,description,content,label=None,noindex=False,extra=None,he
  content=optimize_images(content)
  canonical=BASE+path
  graph=[business,{'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'Tom Cutts Joinery & Building','publisher':{'@id':BASE+'/#business'}},{'@type':'WebPage','@id':canonical+'#page','url':canonical,'name':title,'description':description,'isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#business'}}]
- if path!='/':graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':BASE+'/'},{'@type':'ListItem','position':2,'name':label or title.split('|')[0].strip(),'item':canonical}]})
- if path.startswith('/areas/'):
-  graph[-1]['itemListElement'].insert(1,{'@type':'ListItem','position':2,'name':'Areas we cover','item':BASE+'/areas-we-cover'})
-  graph[-1]['itemListElement'][-1]['position']=3
+ if path!='/':
+  trail=[{'@type':'ListItem','position':1,'name':'Home','item':BASE+'/'}]
+  parent=('/areas-we-cover','Areas we cover') if path.startswith('/areas/') else ('/services','Services') if path.startswith('/services-') or path=='/commercial' else ('/guides','Project guides') if path.startswith('/guides/') else ('/gallery','Our work') if path.startswith('/projects/') else None
+  if parent:
+   trail.append({'@type':'ListItem','position':2,'name':parent[1],'item':BASE+parent[0]})
+   if not path.startswith('/areas/'):
+    content=content.replace('<a href="/">Home</a>','<a href="/">Home</a><span aria-hidden="true">/</span><a href="'+parent[0]+'">'+parent[1]+'</a>',1)
+  trail.append({'@type':'ListItem','position':len(trail)+1,'name':label or title.split('|')[0].strip(),'item':canonical})
+  graph.append({'@type':'BreadcrumbList','itemListElement':trail})
  if extra:graph.append(extra)
  preload='<link rel="preload" as="image" href="/assets/hero-1280.webp" imagesrcset="/assets/hero-768.webp 768w, /assets/hero-1280.webp 1280w, /assets/hero-1672.webp 1672w" imagesizes="100vw">' if hero_home else ''
- page_nav=re.search(r'<header-template>(.*?)</header-template>',calm,re.S).group(1) if hero_home else nav
- page_footer=re.search(r'<footer-template>(.*?)</footer-template>',calm,re.S).group(1) if hero_home else footer
+ page_nav=nav
+ page_footer=footer
  page_quick='' if hero_home else quick
  page_css=CALM_CSS if hero_home else CSS_FILE
  map_assets=f'<link rel="stylesheet" href="/vendor/leaflet/leaflet.css"><link rel="stylesheet" href="/assets/{MAP_CSS}"><script src="/assets/{MAP_JS}" defer></script>' if 'id="coverage-map"' in content else ''
  structured=json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)
- doc=f'''<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1e293b"><meta name="robots" content="{'noindex, follow' if noindex else 'index, follow, max-image-preview:large'}"><title>{esc(title)}</title><meta name="description" content="{esc(description)}"><link rel="canonical" href="{canonical}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:locale" content="en_GB"><meta property="og:site_name" content="Tom Cutts Joinery &amp; Building"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{BASE}/assets/wooden-clad-building-grey-doors-windows.webp"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:image" content="{BASE}/assets/wooden-clad-building-grey-doors-windows.webp"><link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/{page_css}">{preload}{map_assets}<script type="application/ld+json">{structured}</script><script src="/assets/{JS_FILE}" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a>{page_nav}<main id="main">{content}</main>{page_footer}{page_quick}{{COOKIE_PANEL}}</body></html>'''
+ doc=f'''<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1e293b"><meta name="robots" content="{'noindex, follow' if noindex else 'index, follow, max-image-preview:large'}"><title>{esc(title)}</title><meta name="description" content="{esc(description)}"><link rel="canonical" href="{canonical}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:locale" content="en_GB"><meta property="og:site_name" content="Tom Cutts Joinery &amp; Building"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{BASE}/assets/wooden-clad-building-grey-doors-windows.webp"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:image" content="{BASE}/assets/wooden-clad-building-grey-doors-windows.webp"><link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/{page_css}">{preload}{map_assets}<link rel="stylesheet" href="/assets/{CHROME_CSS}"><script type="application/ld+json">{structured}</script><script src="/assets/{JS_FILE}" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a>{page_nav}<main id="main">{content}</main>{page_footer}{page_quick}{{COOKIE_PANEL}}</body></html>'''
  cookie=''
  if analytics.get('measurementId'):
   cookie='<section class="cookie-panel" id="cookie-panel" aria-labelledby="cookie-title" hidden><h2 id="cookie-title">Optional website analytics</h2><p>May we use Google Analytics to understand where visitors come from and which pages and contact buttons help them? It is off unless you accept. Your enquiry details are never sent to Analytics.</p><div class="cookie-actions"><button type="button" data-consent="denied">Reject analytics</button><button type="button" data-consent="granted">Accept analytics</button></div><a href="/privacy">Privacy &amp; cookie information</a></section>'
@@ -117,6 +122,18 @@ def cta(title='Tell us what you have in mind.',text='Share a few photos, your po
  return f'<section class="cta-band"><div class="wrap"><div><h2>{title}</h2><p>{text}</p></div><a class="button" href="/contact">Get a free quote ↗</a></div></section>'
 def faq(items):return '<section class="section wrap faq page-faq"><div><div class="eyebrow">Useful answers</div><h2>Before you begin.</h2></div><div>'+''.join('<details><summary>'+esc(i['q'])+'</summary><p>'+esc(i['a'])+'</p></details>' for i in items)+'</div></section>'
 def section_from_raw(id):return re.search(r'<section\b[^>]*\bid="'+id+r'"[^>]*>.*?</section>',raw,re.S).group(0)
+SERVICE_LABELS={'garden-rooms':'Garden rooms','decking':'Decking & pergolas','joinery':'Bespoke joinery','kitchens':'Kitchen fitting','extensions':'Extensions & conversions','renovations':'Home renovations','commercial':'Commercial work','media-walls':'Media walls & panelling'}
+def service_area_links(key):
+ selected=[a for a in area_data if key in a['focus']]
+ return '<div class="service-area-links"><strong>Planning this work near you?</strong><div class="area-links-list">'+''.join('<a href="/areas/'+a['slug']+'">'+esc(a['name'])+'</a>' for a in selected[:5])+'</div><a href="/areas-we-cover">Explore all service areas</a></div>'
+def service_resources(key):
+ collection={'garden-rooms':'garden-rooms','decking':'decking','joinery':'interior-joinery','media-walls':'interior-joinery','kitchens':'interior-joinery'}.get(key)
+ items=[]
+ if collection:items.append('<p>See the materials and finishing details in our <a href="/projects/'+collection+'">'+{'garden-rooms':'garden-room project gallery','decking':'decking project gallery','interior-joinery':'interior joinery project gallery'}[collection]+'</a>.</p>')
+ for guide in guides:
+  if guide['service']==key:items.append('<p><a href="/guides/'+guide['slug']+'">'+esc(guide['heading'])+'</a> — '+esc(guide['summary'])+'</p>')
+ if key in ('commercial','extensions','renovations'):items.append('<p>Learn about our <a href="/about">team, experience and approach to managing building work</a> before discussing your project.</p>')
+ return '<aside class="context-links"><h3>See the work. Plan your next step.</h3>'+''.join(items)+'</aside>' if items else ''
 # The approved calmer homepage uses the existing live form names and shared tracking.
 home=re.search(r'<main-template>(.*?)</main-template>',calm,re.S).group(1)
 home=home.replace('{{ALL_SERVICES}}',service_tiles(image)).replace('{{COVERAGE}}',coverage_section(area_data))
@@ -129,7 +146,7 @@ for key,d in services.items():
  body='<p>'+esc(d['intro'][1])+'</p>'
  for section in d['sections']:body+='<h2>'+esc(section['heading'])+'</h2>'+''.join('<p>'+esc(v)+'</p>' for v in section['paragraphs'])
  aside='<aside class="service-aside"><h3>Talk through your project</h3><ul>'+''.join('<li>'+esc(v)+'</li>' for v in d['bullets'])+'</ul><p>Free, no-obligation quotations. Established in 2020, backed by 18+ years’ experience.</p><a class="button" href="/contact">Enquire about '+esc(label.lower())+' ↗</a><p><a class="text-link" href="tel:07816937159">07816 937 159</a></p></aside>'
- content+='<section class="section wrap service-layout"><div class="page-content">'+body+'<p class="service-area-line">Serving Colne, Pendle, Clitheroe, Whalley, Barrow and the Ribble Valley, and towards Silsden, Sutton and Cross Hills. <a class="text-link" href="/areas-we-cover">Check our service areas ↗</a></p></div>'+aside+'</section>'
+ content+='<section class="section wrap service-layout"><div class="page-content">'+body+service_area_links(key)+service_resources(key)+'</div>'+aside+'</section>'
  content+='<section class="section light"><div class="wrap"><div class="eyebrow">Our workmanship</div><h2>Details from our project gallery.</h2><div class="service-photos">'+''.join('<figure><a href="/gallery">'+image(n,'Joinery and building work from our project gallery')+'</a></figure>' for n in photos[:3])+'</div>'
  if key=='kitchens':content+='<p class="photo-note">These photographs show our fitted cabinetry and interior joinery, rather than a completed kitchen installation.</p>'
  if key=='commercial':content+='<p class="photo-note">These photographs illustrate our workmanship; they are not labelled as projects for the named organisations.</p>'
@@ -153,6 +170,12 @@ render('/gallery','Joinery, Garden Room & Decking Gallery | Tom Cutts','See real
 collections=[('garden-rooms','Garden rooms & timber construction','Explore real photographs of garden buildings and the work behind the finish. These images show timber cladding, dark-framed glazing, structural framing and exterior preparation across our project collection.','garden-rooms',['wooden-clad-building-grey-doors-windows.webp','brown-composite-garden-room-office.webp','wood-frame-room-construction.webp','shed-construction-blue-membrane.webp','worker-installing-cedar-cladding.webp','wooden-shed-dark-windows-doors.webp'],['Clad garden building and glazing','Brown-clad garden room','Timber framing during construction','Exterior membrane and battens','Cladding work in progress','Exterior timber and glazing details']),('decking','Decking & outdoor living','Take a closer look at the deck layouts, steps and outdoor spaces in our project photographs. When planning a similar project, the layout, ground levels, material choice and route from the house or garden room all need consideration.','decking',['composite-decking-steps-garden.webp','white-hot-tub-composite-decking.webp','decking.jpg','pergola.jpg'],['Composite decking with broad steps','Deck with a hot tub and balustrade','Garden decking','Timber pergola']),('interior-joinery','Interior joinery & fitted details','Our interior work ranges from fitted cabinetry and wardrobes to stairs, media walls and timber-lined spaces. These photographs show the different materials, layouts and finishing details in our project collection.','joinery',['hallway-cabinet-decor.webp','hallway-staircase-oak-balustrade.webp','gallery-media-wall.jpg','gallery-wardrobes.jpg','cedar-sauna-interior-with-heater-and-window.webp','boat-cockpit-interior.webp'],['Painted hallway cabinetry','Staircase and oak balustrade','Bespoke media wall','Fitted wardrobes','Sauna interior with timber benches','Boat interior details'])]
 for slug,title,intro,service,photos,captions in collections:
  content=hero(title,esc(title)+'.',esc(intro))+'<section class="section wrap"><div class="service-photos">'+''.join('<figure><a href="/assets/'+assets[n]['file']+'" target="_blank" rel="noopener">'+image(n,cap)+'</a><figcaption>'+esc(cap)+'</figcaption></figure>' for n,cap in zip(photos,captions))+'</div><div class="page-content"><h2>Planning something similar?</h2><p>Send the photos that interest you with your postcode, approximate dimensions and intended use. Our team can discuss which details might suit your home, the work involved and the next step towards a quotation.</p><p>Every site and brief is different. These photographs show our work; they are not a specification or a promise that the same layout will suit every property.</p><div class="quick-links"><a class="text-link" href="'+services[service]['path']+'">Explore '+esc(title.lower())+' services ↗</a><a class="text-link" href="/gallery">Back to the full gallery ↗</a></div></div></section>'+cta()
+ if slug=='interior-joinery':
+  content=content.replace('<h2>Planning something similar?</h2>','<h2>Planning something similar?</h2><p>Explore <a href="/services-media-walls">media walls and panelling</a> or <a href="/services-joinery">bespoke fitted joinery</a> for the practical details behind these finishes.</p>')
+ else:
+  guide_path='/guides/garden-room-costs' if slug=='garden-rooms' else '/guides/timber-or-composite-decking'
+  guide_label='garden-room quotation guide' if slug=='garden-rooms' else 'timber and composite decking guide'
+  content=content.replace('<h2>Planning something similar?</h2>','<h2>Planning something similar?</h2><p>Read our <a href="'+guide_path+'">'+guide_label+'</a> to turn your ideas into a clearer brief.</p>')
  render('/projects/'+slug,title+' | Tom Cutts Project Gallery',intro[:155],content,title)
 # Area hub and individually written, directly usable local guides.
 area_content=hero('Areas we cover','Find your area.<br>Plan your project.','Our Colne team works across Pendle, Burnley, the Ribble Valley and towards Silsden, Sutton-in-Craven and Cross Hills. Choose a local guide for services, project preparation and useful property information.')
@@ -173,12 +196,12 @@ for d in guides:
  path='/guides/'+d['slug']
  guide_cards+='<article class="related-card guide-card">'+image(d['photo'],d['photoAlt']).replace('<img ','<img class="guide-card-image" ',1)+'<h2><a href="'+path+'">'+esc(d['heading'])+'</a></h2><p>'+esc(d['summary'])+'</p><a class="text-link" href="'+path+'">Read the guide ↗</a></article>'
  aside='<aside class="service-aside guide-aside"><h3>Plan your project</h3><a href="'+services[d['service']]['path']+'">Explore the service ↗</a><a href="/projects/'+d['service']+'">View project photographs ↗</a>'+''.join('<a href="/guides/'+g['slug']+'">'+esc(g['heading'])+'</a>' for g in guides if g['slug']!=d['slug'])+'<a class="button" href="/contact">Ask our team for a quotation ↗</a></aside>'
- content=hero('Project guide',esc(d['heading']),esc(d['summary']),d['photo'],d['photoAlt'])+'<section class="section wrap service-layout"><article class="page-content"><p class="guide-date">Published 28 September 2026 · Tom Cutts Joinery &amp; Building</p>'+d['body']+'</article>'+aside+'</section>'+cta('Ready to discuss your outdoor space?')
+ content=hero('Project guide',esc(d['heading']),esc(d['summary']),d['photo'],d['photoAlt'])+'<section class="section wrap service-layout"><article class="page-content"><p class="guide-date">Published 28 September 2026 · Tom Cutts Joinery &amp; Building</p>'+d['body']+'<div class="context-links"><h2>Planning a local project?</h2><p>Our Colne-based team covers <a href="/areas/colne">Colne</a>, <a href="/areas/ribble-valley">the Ribble Valley</a> and <a href="/areas-we-cover">surrounding service areas</a>. Explore the local guidance, then send your postcode and outline of work.</p></div></article>'+aside+'</section>'+cta('Ready to discuss your outdoor space?')
  render(path,d['title'],d['description'],content,d['heading'])
 render('/guides','Garden Room & Decking Planning Guides | Tom Cutts','Practical guides to garden-room costs, timber versus composite decking and comparing quotations. Plan your outdoor project with Tom Cutts in Lancashire.',hero('Project guides','Plan with a clearer picture.','Useful questions and practical information to help you choose materials, compare quotations and make a start.')+'<section class="section wrap"><div class="related-grid">'+guide_cards+'</div></section>'+cta(),'Project guides')
 (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: '+BASE+'/sitemap.xml\n')
-(OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+BASE+path+'</loc><lastmod>'+('2026-10-05' if path in ('/','/services','/services-media-walls','/areas-we-cover') or path.startswith('/areas/') else '2026-09-28')+'</lastmod></url>\n' for path in pages)+'</urlset>\n')
-redirects=['/index.html / 301!','/index / 301!','/menu.html /services 301!','/menu /services 301!','/_recovered-live-site/index.html / 301!','/_recovered-live-site/ / 301!','/review https://g.page/r/CWTtpNavvoM0EBM/review 302!']
+(OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+BASE+path+'</loc><lastmod>'+('2026-10-05' if path in ('/','/services','/services-media-walls','/areas-we-cover') or path.startswith('/areas/') else '2026-10-05')+'</lastmod></url>\n' for path in pages)+'</urlset>\n')
+redirects=['https://tcjoinery.netlify.app/* https://tcjoinerbuilder.co.uk/:splat 301!','/index.html / 301!','/index / 301!','/menu.html /services 301!','/menu /services 301!','/_recovered-live-site/index.html / 301!','/_recovered-live-site/ / 301!','/review https://g.page/r/CWTtpNavvoM0EBM/review 302!']
 for path in pages+['/thank-you']:
  if path!='/':redirects.append(path+'.html '+path+' 301!')
 (OUT/'_redirects').write_text('\n'.join(redirects)+'\n')
