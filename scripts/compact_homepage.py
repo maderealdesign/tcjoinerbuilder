@@ -41,7 +41,7 @@ def compact_homepage(home, image):
         'We work through the materials, preparation, scope and timing, then provide a clear quotation for the agreed job.': 'Agree the scope, materials and timing, with a clear quotation.',
         'We keep you informed as the job progresses and walk through the finished work with you at handover.': 'We keep you updated through the build and handover.',
         'Planning a garden room, weighing up decking or thinking about work inside the house? These are a few useful starting points.': 'Useful answers before you start.',
-        'A garden room, new decking or a bigger change at home — tell Tom what you’re planning. We’re here to help you understand the options and take the next step.': 'Tell Tom what you’re planning. Send your postcode, a few photos and your ideas.',
+        'A garden room, new decking or a bigger change at home — tell us what you’re planning. We’re here to help you understand the options and take the next step.': 'Tell us what you’re planning. Send your postcode, a few photos and your ideas.',
     }
     for old, new in replacements.items():
         replace(old, new)

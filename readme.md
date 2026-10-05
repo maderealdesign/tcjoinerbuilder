@@ -8,6 +8,7 @@ Live website: https://tcjoinerbuilder.co.uk
 - `src/homepage.html` and `src/homepage-compact.css`: shared supporting-page styles and source sections for About and Gallery.
 - `src/services.json`: eight service pages.
 - `src/areas.json`: eleven individually written service-area guides.
+- `src/coverage-map.js`, `src/coverage-map.css` and `src/map-points.json`: lazy-loaded Leaflet map with cached OpenStreetMap town-centre coordinates, never branch addresses. Library/licence in `public/vendor/leaflet/`; visible tile attribution must remain. See https://operations.osmfoundation.org/policies/tiles/ and https://operations.osmfoundation.org/policies/nominatim/ (one-time geocoding only, no visitor address lookup).
 - `scripts/local_pages.py`: area pages, coverage navigation and homepage service photo cards.
 - `src/guides.json`: three researched buyer guides and the guide index.
 - `scripts/build.py`: static page templates, navigation, forms, metadata, sitemap and redirects.

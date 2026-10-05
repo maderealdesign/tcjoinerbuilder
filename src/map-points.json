@@ -1,0 +1,53 @@
+{
+  "source": "OpenStreetMap town centres via Nominatim; service locations, not branch addresses.",
+  "points": [
+    {
+      "slug": "colne",
+      "name": "Colne",
+      "lat": 53.8567728,
+      "lon": -2.1691238
+    },
+    {
+      "slug": "clitheroe",
+      "name": "Clitheroe",
+      "lat": 53.8717465,
+      "lon": -2.3926783
+    },
+    {
+      "slug": "whalley",
+      "name": "Whalley",
+      "lat": 53.8215412,
+      "lon": -2.4059596
+    },
+    {
+      "slug": "barrow",
+      "name": "Barrow",
+      "lat": 53.8406524,
+      "lon": -2.4025937
+    },
+    {
+      "slug": "burnley",
+      "name": "Burnley",
+      "lat": 53.7907262,
+      "lon": -2.2439196
+    },
+    {
+      "slug": "silsden",
+      "name": "Silsden",
+      "lat": 53.913185,
+      "lon": -1.9374737
+    },
+    {
+      "slug": "sutton-in-craven",
+      "name": "Sutton-in-Craven",
+      "lat": 53.8917524,
+      "lon": -1.9922285
+    },
+    {
+      "slug": "cross-hills",
+      "name": "Cross Hills",
+      "lat": 53.9019787,
+      "lon": -1.9883661
+    }
+  ]
+}

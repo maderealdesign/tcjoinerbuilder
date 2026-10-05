@@ -3,14 +3,7 @@ from html import escape
 import re
 
 def coverage_guide():
-    groups=[('Ribble Valley',10,[('clitheroe','Clitheroe'),('whalley','Whalley'),('barrow','Barrow')]),('Colne & Pendle',170,[('colne','Colne · our base'),('pendle','Pendle'),('burnley','Burnley')]),('Towards Airedale',330,[('silsden','Silsden'),('sutton-in-craven','Sutton-in-Craven'),('cross-hills','Cross Hills')])]
-    parts=['<figure class="coverage-guide"><svg viewBox="0 0 490 230" role="img" aria-labelledby="coverage-map-title"><title id="coverage-map-title">Service area guide: Ribble Valley, Colne and Pendle, and towards Airedale</title><path d="M80 120H410" stroke="#f7b3c0" stroke-width="4" fill="none"/>']
-    for group,x,towns in groups:
-        parts.append(f'<text class="region" x="{x+70}" y="25" text-anchor="middle">{escape(group)}</text>')
-        for i,(slug,name) in enumerate(towns):
-            y=48+i*54
-            parts.append(f'<a href="/areas/{slug}" aria-label="Joinery and building in {escape(name)}"><rect x="{x}" y="{y}" width="145" height="40" rx="5" fill="#f8fafc" stroke="#d5dce5"/><text class="town" x="{x+72}" y="{y+25}" text-anchor="middle">{escape(name)}</text></a>')
-    return ''.join(parts)+'</svg><figcaption>Explore the areas we serve from Colne. This is a coverage guide, not a boundary map; confirm your postcode with Tom.</figcaption></figure>'
+    return '<figure class="coverage-map-card"><div class="coverage-map" id="coverage-map" role="region" aria-label="Map of our joinery and building service areas"><p class="map-fallback">Explore our service areas on the map, or choose a location from the buttons.</p></div><figcaption><span class="map-legend-dot" aria-hidden="true"></span>Serving Lancashire &amp; the Ribble Valley, across to Airedale.<small>Pins show the towns we serve, not branch offices. Select a pin to explore.</small></figcaption></figure>'
 
 def coverage_section(areas):
     buttons=''.join(f'<a href="/areas/{d["slug"]}">{escape(d["name"])}</a>' for d in areas)
