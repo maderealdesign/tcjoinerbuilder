@@ -64,6 +64,17 @@ for u in urls:
 if len({p.title for p in pages.values()})!=len(pages):issues.append('Duplicate page titles')
 if 'Disallow: /\n' in (ROOT/'robots.txt').read_text():issues.append('Robots blocks production')
 if 'noindex, nofollow' in (ROOT/'_headers').read_text():issues.append('Global preview header')
+# New local guides must be discoverable and have a direct, attributable enquiry route.
+area_data=json.loads((ROOT.parent/'src/areas.json').read_text())
+if len({d['intro'] for d in area_data})!=len(area_data):issues.append('Duplicate area introductions')
+for d in area_data:
+ path='/areas/'+d['slug']
+ for entry in ['/', '/areas-we-cover']:
+  if path not in pages[entry].links:issues.append(entry+': missing area link '+path)
+ if BASE+path not in urls:issues.append('Area missing from sitemap: '+path)
+ if not any(f['attrs'].get('name')=='contact-enquiry' and f['fields'].get('page',{}).get('value')==path for f in pages[path].forms):issues.append(path+': missing local enquiry form')
+for service in json.loads((ROOT.parent/'src/services.json').read_text()).values():
+ if service['path'] not in pages['/'].links:issues.append('Homepage missing service: '+service['path'])
 for issue in issues:print('FAIL',issue)
 if issues:raise SystemExit(1)
 print(f'PASS: {len(pages)} HTML pages, {len(urls)} sitemap URLs, local links, metadata, JSON-LD, images and live forms.')
